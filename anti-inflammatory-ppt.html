@@ -486,19 +486,45 @@ body {
   <h2 class="slide-title">炎症与疾病的关系网络</h2>
   <p class="slide-subtitle">看似无关的疾病，背后都与慢性炎症有关</p>
   
-  <div class="relation-map">                         慢性炎症（根源）
-                              │
-        ┌──────────┬──────────┼──────────┬──────────┐
-        ▼          ▼          ▼          ▼          ▼
-   ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
-   │动脉    │ │代谢    │ │肿瘤    │ │神经    │ │免疫    │
-   │硬化    │ │疾病    │ │疾病    │ │疾病    │ │疾病    │
-   └────┬───┘ └────┬───┘ └────┬───┘ └────┬───┘ └────┬───┘
-        │          │          │          │          │
-        ▼          ▼          ▼          ▼          ▼
-   • 心肌梗死   • 糖尿病    • 癌症     • 抑郁症   • 过敏
-   • 脑卒中     • 脂肪肝    •          • 痴呆     • 哮喘
-   • 高血压     • 肥胖      •          •          • 皮炎</div>
+  <div style="background: #f5ede3; padding: 30px; border-radius: 12px; margin: 20px 0;">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <div style="font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 15px;">慢性炎症（根源）</div>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 20px;">
+        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+          <div style="font-weight: 600; color: var(--primary);">动脉硬化</div>
+        </div>
+        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+          <div style="font-weight: 600; color: var(--primary);">代谢疾病</div>
+        </div>
+        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+          <div style="font-weight: 600; color: var(--primary);">肿瘤疾病</div>
+        </div>
+        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+          <div style="font-weight: 600; color: var(--primary);">神经疾病</div>
+        </div>
+        <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid var(--primary);">
+          <div style="font-weight: 600; color: var(--primary);">免疫疾病</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;">
+        <div style="font-size: 13px; color: var(--text2); line-height: 1.6;">
+          • 心肌梗死<br>• 脑卒中<br>• 高血压
+        </div>
+        <div style="font-size: 13px; color: var(--text2); line-height: 1.6;">
+          • 糖尿病<br>• 脂肪肝<br>• 肥胖
+        </div>
+        <div style="font-size: 13px; color: var(--text2); line-height: 1.6;">
+          • 癌症<br>• 肿瘤<br>• 恶性病变
+        </div>
+        <div style="font-size: 13px; color: var(--text2); line-height: 1.6;">
+          • 抑郁症<br>• 痴呆<br>• 认知障碍
+        </div>
+        <div style="font-size: 13px; color: var(--text2); line-height: 1.6;">
+          • 过敏<br>• 哮喘<br>• 皮炎
+        </div>
+      </div>
+    </div>
+  </div>
   
   <h3 style="color: var(--primary); margin: 25px 0 15px;">关键炎症标志物</h3>
   <div class="three-col">
@@ -522,15 +548,19 @@ body {
   <h2 class="slide-title">疾病机制：动脉硬化</h2>
   <p class="slide-subtitle">炎症如何导致心脑血管疾病</p>
   
-  <div class="flow-chart">血管内皮受损
-    ↓
-炎症反应启动（免疫细胞聚集）
-    ↓
-脂质沉积 + 炎症因子释放
-    ↓
-动脉粥样硬化斑块形成
-    ↓
-血管狭窄 / 斑块破裂 → 心梗、脑卒中</div>
+  <div style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 25px; border-radius: 12px; margin: 20px 0;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid var(--accent); font-weight: 500;">1️⃣ 血管内皮受损</div>
+      <div style="text-align: center; color: var(--accent); font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid var(--accent); font-weight: 500;">2️⃣ 炎症反应启动（免疫细胞聚集）</div>
+      <div style="text-align: center; color: var(--accent); font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid var(--accent); font-weight: 500;">3️⃣ 脂质沉积 + 炎症因子释放</div>
+      <div style="text-align: center; color: var(--accent); font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid var(--accent); font-weight: 500;">4️⃣ 动脉粥样硬化斑块形成</div>
+      <div style="text-align: center; color: var(--accent); font-size: 20px;">⬇️</div>
+      <div style="background: #ffebee; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #e53935; font-weight: 500; color: #c62828;">5️⃣ 血管狭窄 / 斑块破裂 → 心梗、脑卒中</div>
+    </div>
+  </div>
   
   <h3 style="color: var(--primary); margin: 30px 0 15px;">炎症标志物的作用</h3>
   <table class="compare-table">
@@ -620,21 +650,25 @@ body {
   </div>
   
   <h3 style="color: var(--primary); margin: 30px 0 15px;">肥胖 → 炎症的恶性循环</h3>
-  <div class="flow-chart">肥胖
-  ↓
-脂肪组织增大
-  ↓
-促炎因子↑ + 抗炎因子↓
-  ↓
-全身慢性炎症
-  ↓
-胰岛素抵抗
-  ↓
-代谢综合征
-  ↓
-糖尿病、高血压、高血脂
-  ↓
-心血管疾病</div>
+  <div style="background: linear-gradient(135deg, #f3e5f5, #e1bee7); padding: 25px; border-radius: 12px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #9b59b6; font-weight: 500;">🔴 肥胖</div>
+      <div style="text-align: center; color: #9b59b6; font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #9b59b6; font-weight: 500;">脂肪组织增大</div>
+      <div style="text-align: center; color: #9b59b6; font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #9b59b6; font-weight: 500;">促炎因子↑ + 抗炎因子↓</div>
+      <div style="text-align: center; color: #9b59b6; font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #9b59b6; font-weight: 500;">全身慢性炎症</div>
+      <div style="text-align: center; color: #9b59b6; font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #9b59b6; font-weight: 500;">胰岛素抵抗</div>
+      <div style="text-align: center; color: #9b59b6; font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #9b59b6; font-weight: 500;">代谢综合征</div>
+      <div style="text-align: center; color: #9b59b6; font-size: 20px;">⬇️</div>
+      <div style="background: white; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #9b59b6; font-weight: 500;">糖尿病、高血压、高血脂</div>
+      <div style="text-align: center; color: #9b59b6; font-size: 20px;">⬇️</div>
+      <div style="background: #ffebee; padding: 12px 20px; border-radius: 8px; border-left: 4px solid #e53935; font-weight: 500; color: #c62828;">⚠️ 心血管疾病</div>
+    </div>
+  </div>
   
   <div class="core-box" style="margin-top: 30px;">
     <h3>减肥 = 最有效的抗炎"药"</h3>
@@ -693,35 +727,68 @@ body {
   <p class="slide-subtitle">抗炎 = 抗氧化</p>
   
   <h3 style="color: var(--primary); margin: 20px 0 15px;">炎症-氧化恶性循环</h3>
-  <div class="relation-map">        ┌─────────────────────────────────────┐
-        │         炎症 ⟷ 氧化                │
-        │        （恶性循环）                 │
-        └─────────────────────────────────────┘
-                      ↑↓
-    炎症发生 ───────→ 活性氧增加
-         ↑                ↓
-         └──── 氧化损伤 ←─┘
-                ↓
-         细胞损伤、衰老
-                ↓
-         更多炎症反应</div>
+  <div style="background: linear-gradient(135deg, #ffebee, #ffcdd2); padding: 25px; border-radius: 12px; margin: 20px 0;">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <div style="background: white; display: inline-block; padding: 15px 30px; border-radius: 8px; border: 2px solid #e53935; font-weight: 600; color: #c62828; margin-bottom: 15px;">
+        炎症 ⟷ 氧化（恶性循环）
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-around; align-items: center; margin: 20px 0;">
+      <div style="text-align: center; flex: 1;">
+        <div style="font-size: 24px; margin-bottom: 10px;">🔥</div>
+        <div style="font-weight: 500; color: var(--primary);">炎症发生</div>
+      </div>
+      <div style="font-size: 24px; color: var(--accent);">→</div>
+      <div style="text-align: center; flex: 1;">
+        <div style="font-size: 24px; margin-bottom: 10px;">⚡</div>
+        <div style="font-weight: 500; color: var(--primary);">活性氧增加</div>
+      </div>
+      <div style="font-size: 24px; color: var(--accent);">→</div>
+      <div style="text-align: center; flex: 1;">
+        <div style="font-size: 24px; margin-bottom: 10px;">💔</div>
+        <div style="font-weight: 500; color: var(--primary);">氧化损伤</div>
+      </div>
+      <div style="font-size: 24px; color: var(--accent);">→</div>
+      <div style="text-align: center; flex: 1;">
+        <div style="font-size: 24px; margin-bottom: 10px;">🔄</div>
+        <div style="font-weight: 500; color: var(--primary);">更多炎症</div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 15px; padding: 12px; background: white; border-radius: 8px; color: var(--text2);">
+      细胞损伤 → 衰老 → 疾病
+    </div>
+  </div>
   
   <h3 style="color: var(--primary); margin: 30px 0 15px;">活性氧的产生与清除</h3>
-  <div class="flow-chart">进入人体的氧气
-      │
-      ├──→ 98% 正常代谢
-      │
-      └──→ 2% 成为活性氧（自由基）
-                │
-                ├──→ 正常：被体内抗氧化系统清除
-                │
-                └──→ 异常：炎症导致活性氧过量
-                              │
-                              ↓
-                         氧化应激
-                              │
-                              ↓
-                    细胞损伤、DNA损伤、衰老</div>
+  <div style="background: #e3f2fd; padding: 25px; border-radius: 12px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <div style="font-weight: 600; color: #1976d2; margin-bottom: 15px;">进入人体的氧气</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: white; padding: 10px 15px; border-radius: 6px; border-left: 3px solid #4caf50;">
+            ✅ 98% 正常代谢
+          </div>
+          <div style="background: white; padding: 10px 15px; border-radius: 6px; border-left: 3px solid #ff9800;">
+            ⚠️ 2% 成为活性氧（自由基）
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight: 600; color: #1976d2; margin-bottom: 15px;">活性氧的处理</div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: white; padding: 10px 15px; border-radius: 6px; border-left: 3px solid #4caf50;">
+            ✅ 正常：被体内抗氧化系统清除
+          </div>
+          <div style="background: white; padding: 10px 15px; border-radius: 6px; border-left: 3px solid #e53935;">
+            ❌ 异常：炎症导致活性氧过量
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 15px; padding: 12px; background: white; border-radius: 8px; border-left: 4px solid #e53935; color: #c62828; font-weight: 500;">
+      结果：氧化应激 → 细胞损伤 → DNA损伤 → 衰老
+    </div>
+  </div>
   
   <div class="core-box" style="margin-top: 30px;">
     <h3>抗炎 = 抗氧化</h3>
