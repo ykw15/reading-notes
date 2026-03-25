@@ -683,10 +683,9 @@ function animateStats() {
         books.reduce((sum, b) => sum + b.notes.length, 0);
 }
 
-// 打开详情
+// 打开详情 - 跳转到PPT播放器
 function openModal(id) {
-    const b = books.find(b => b.id === id);
-    if (!b) return;
+    window.location.href = 'anti-inflammatory-ppt.html';
     const modal = document.getElementById('modal-content');
     modal.innerHTML = `
         <div class="modal-header">
