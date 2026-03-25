@@ -1,215 +1,778 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📚 读书笔记</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-  padding: 40px 20px;
-  color: #333;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 读书笔记</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+        :root {
+            --bg: #faf7f2;
+            --card-bg: #fff;
+            --primary: #8b5e3c;
+            --primary-light: #c49a6c;
+            --accent: #e07b4f;
+            --text: #2c2416;
+            --text-secondary: #7a6f5e;
+            --border: #e8dfd3;
+            --shadow: 0 4px 20px rgba(139,94,60,.10);
+            --radius: 16px;
+        }
 
-header {
-  text-align: center;
-  margin-bottom: 50px;
-  color: white;
-}
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-header h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
 
-header p {
-  font-size: 18px;
-  opacity: 0.9;
-}
+        /* ── 顶部导航 ── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,247,242,.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 40px;
+        }
+        .navbar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .navbar-brand {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .navbar-nav {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .navbar-nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color .2s;
+        }
+        .navbar-nav a:hover, .navbar-nav a.active {
+            color: var(--primary);
+        }
+        .nav-cta {
+            background: var(--primary);
+            color: #fff !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 500 !important;
+            transition: background .2s, transform .15s;
+        }
+        .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
 
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin: 40px 0;
-}
+        /* ── Hero ── */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text { }
+        .hero-eyebrow {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        .hero-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+        .hero-stat {}
+        .hero-stat .num {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .hero-stat .label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
 
-.stat-item {
-  text-align: center;
-  color: white;
-}
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .book-stack {
+            position: relative;
+            width: 260px;
+            height: 320px;
+        }
+        .book-stack .book {
+            position: absolute;
+            width: 180px;
+            height: 260px;
+            border-radius: 6px 14px 14px 6px;
+            box-shadow: 0 8px 32px rgba(0,0,0,.18);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            transition: transform .3s;
+        }
+        .book-stack .book:nth-child(1) {
+            background: linear-gradient(145deg, #8b5e3c, #a0724a);
+            top: 10px; left: 0;
+            transform: rotate(-6deg);
+            z-index: 1;
+        }
+        .book-stack .book:nth-child(2) {
+            background: linear-gradient(145deg, #e07b4f, #e8946e);
+            top: 20px; left: 30px;
+            transform: rotate(3deg);
+            z-index: 2;
+        }
+        .book-stack .book:nth-child(3) {
+            background: linear-gradient(145deg, #3d6b4f, #527a62);
+            top: 30px; left: 60px;
+            transform: rotate(8deg);
+            z-index: 3;
+        }
+        .book-stack .book:hover { transform: rotate(0deg) translateY(-8px) !important; z-index: 10 !important; }
+        .book .icon { font-size: 48px; margin-bottom: 12px; }
+        .book .title { color: rgba(255,255,255,.95); font-size: 14px; font-weight: 600; text-align: center; }
+        .book .author { color: rgba(255,255,255,.6); font-size: 11px; margin-top: 6px; }
 
-.stat-number {
-  font-size: 48px;
-  font-weight: 700;
-  display: block;
-}
+        /* ── 筛选栏 ── */
+        .filter-bar {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px 32px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-tag {
+            padding: 7px 18px;
+            border-radius: 30px;
+            border: 1.5px solid var(--border);
+            background: var(--card-bg);
+            font-size: 13px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .filter-tag:hover, .filter-tag.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #f5ede3;
+        }
 
-.stat-label {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-top: 5px;
-}
+        /* ── 书单网格 ── */
+        .book-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+        }
 
-/* 书籍卡片网格 */
-.book-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
+        .book-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform .25s, box-shadow .25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(139,94,60,.18);
+        }
 
-/* 书籍卡片 */
-.book-card {
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+        .card-cover {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-cover .cover-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: .12;
+            background-image: radial-gradient(circle at 20% 50%, currentColor 1px, transparent 1px),
+                              radial-gradient(circle at 80% 20%, currentColor 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+        .card-cover .cover-icon { font-size: 64px; position: relative; z-index: 1; }
+        .card-cover .cover-title {
+            position: absolute;
+            bottom: 12px;
+            left: 16px;
+            right: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255,255,255,.95);
+            text-shadow: 0 2px 8px rgba(0,0,0,.3);
+            z-index: 1;
+        }
 
-.book-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-}
+        .card-body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; }
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .card-category {
+            font-size: 11px;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: #f0e8df;
+            color: var(--primary);
+        }
+        .card-rating { margin-left: auto; color: #f5a623; font-size: 13px; }
+        .card-author { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; }
+        .card-progress-wrap { margin-top: auto; }
+        .card-progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .card-progress-bar {
+            height: 5px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .card-progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            transition: width .4s ease;
+        }
+        .card-footer {
+            padding: 12px 22px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .card-tag {
+            font-size: 11px;
+            padding: 2px 8px;
+            background: var(--bg);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+        .card-date { font-size: 11px; color: var(--text-secondary); }
 
-.book-cover {
-  height: 200px;
-  background: linear-gradient(135deg, #8b5e3c, #c49a6c);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 80px;
-  position: relative;
-}
+        /* ── 书籍详情模态框 ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(44,36,22,.5);
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal {
+            background: var(--card-bg);
+            border-radius: 20px;
+            max-width: 780px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 80px rgba(0,0,0,.2);
+            animation: slideUp .3s ease;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-header {
+            padding: 28px 32px 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            z-index: 1;
+        }
+        .modal-cover {
+            width: 100px;
+            height: 140px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 52px;
+            flex-shrink: 0;
+        }
+        .modal-info {}
+        .modal-info h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+        .modal-info .author { color: var(--text-secondary); font-size: 14px; margin-bottom: 12px; }
+        .modal-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+        .modal-badge {
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: var(--bg);
+            color: var(--text-secondary);
+        }
+        .modal-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 4px;
+            line-height: 1;
+        }
+        .modal-close:hover { color: var(--text); }
+        .modal-body { padding: 28px 32px; }
+        .modal-section { margin-bottom: 28px; }
+        .modal-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .modal-section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .modal-desc {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text);
+            font-weight: 300;
+        }
+        .modal-quote {
+            background: var(--bg);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 15px;
+            color: var(--primary);
+            line-height: 1.8;
+        }
+        .modal-quote cite {
+            display: block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: 'Noto Sans SC', sans-serif;
+            font-style: normal;
+        }
+        .note-card {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--primary-light);
+        }
+        .note-card .note-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .note-card .note-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        .note-card .note-page {
+            font-size: 11px;
+            color: var(--accent);
+            margin-top: 8px;
+        }
 
-.book-cover::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
-}
+        /* ── 底部 ── */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            border-top: 1px solid var(--border);
+        }
 
-.book-cover span {
-  position: relative;
-  z-index: 1;
-}
+        /* ── 响应式 ── */
+        @media (max-width: 768px) {
+            .hero { grid-template-columns: 1fr; padding: 48px 24px 40px; gap: 40px; }
+            .hero h1 { font-size: 34px; }
+            .hero-visual { order: -1; }
+            .book-stack { width: 200px; height: 260px; }
+            .book-stack .book { width: 140px; height: 200px; }
+            .navbar-nav { display: none; }
+            .navbar { padding: 0 20px; }
+            .filter-bar, .book-grid { padding-left: 20px; padding-right: 20px; }
+            .modal-header { padding: 20px; flex-wrap: wrap; }
+            .modal-body { padding: 20px; }
+        }
 
-.book-info {
-  padding: 25px;
-}
-
-.book-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #2c2416;
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-
-.book-author {
-  font-size: 14px;
-  color: #7a6f5e;
-  margin-bottom: 15px;
-}
-
-.book-desc {
-  font-size: 14px;
-  color: #5a5045;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.book-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.book-tag {
-  background: #faf7f2;
-  color: #8b5e3c;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.book-date {
-  font-size: 12px;
-  color: #9a8f7e;
-  margin-top: 15px;
-}
-
-/* 响应式 */
-@media (max-width: 768px) {
-  header h1 { font-size: 32px; }
-  .stats { gap: 30px; }
-  .stat-number { font-size: 36px; }
-  .book-grid { grid-template-columns: 1fr; }
-}
-</style>
+        /* 嵌入抗炎生活页面的容器 */
+        #embedded-page {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>📚 读书笔记</h1>
-    <p>每一本书都是一次思维重构</p>
-    
-    <div class="stats">
-      <div class="stat-item">
-        <span class="stat-number">1</span>
-        <div class="stat-label">已读书籍</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">1</span>
-        <div class="stat-label">读书笔记</div>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">∞</span>
-        <div class="stat-label">持续更新</div>
-      </div>
-    </div>
-  </header>
 
-  <div class="book-grid">
-    <!-- 《抗炎生活》卡片 -->
-    <a href="anti-inflammatory-ppt.html" class="book-card">
-      <div class="book-cover">
-        <span>🌿</span>
-      </div>
-      <div class="book-info">
-        <h2 class="book-title">抗炎生活</h2>
-        <p class="book-author">[日] 池谷敏郎 · 日本心血管疾病权威专家</p>
-        <p class="book-desc">慢性炎症是万病之源。本书从医学角度深入浅出地讲解炎症机制，并提供实用的抗炎生活方式指南。</p>
-        <div class="book-tags">
-          <span class="book-tag">健康</span>
-          <span class="book-tag">营养学</span>
-          <span class="book-tag">生活方式</span>
+<!-- 顶部导航 -->
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="#" class="navbar-brand" onclick="showHome()">
+            📚 读书笔记
+        </a>
+        <ul class="navbar-nav">
+            <li><a href="#" class="active" onclick="showHome()" id="nav-home">首页</a></li>
+            <li><a href="#" onclick="showAllBooks()">全部书籍</a></li>
+            <li><a href="#" onclick="showTags()">标签</a></li>
+        </ul>
+        <a href="#" class="nav-cta" onclick="showHome()">← 返回书单</a>
+    </div>
+</nav>
+
+<!-- 首页 / 书单视图 -->
+<div id="home-view">
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <div class="hero-eyebrow">Reading Notes</div>
+            <h1>每一本书<br>都是一次<span>思维重构</span></h1>
+            <p class="hero-desc">记录读过的书、摘录触动的句子、整理内化后的思考。<br>知识需要沉淀，思考需要留痕。</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num" id="stat-books">0</div>
+                    <div class="label">已读书籍</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num" id="stat-notes">0</div>
+                    <div class="label">读书笔记</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">∞</div>
+                    <div class="label">持续更新</div>
+                </div>
+            </div>
         </div>
-        <p class="book-date">📅 2026-03-25</p>
-      </div>
-    </a>
-  </div>
+        <div class="hero-visual">
+            <div class="book-stack">
+                <div class="book">
+                    <div class="icon">📖</div>
+                    <div class="title">读书</div>
+                    <div class="author">手边常备</div>
+                </div>
+                <div class="book">
+                    <div class="icon">✍️</div>
+                    <div class="title">记录</div>
+                    <div class="author">留下思考</div>
+                </div>
+                <div class="book">
+                    <div class="icon">💡</div>
+                    <div class="title">内化</div>
+                    <div class="author">为我所用</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 筛选标签 -->
+    <div class="filter-bar" id="filter-bar">
+        <span style="font-size:13px;color:var(--text-secondary);margin-right:4px;">筛选：</span>
+        <!-- 由 JS 动态生成 -->
+    </div>
+
+    <!-- 书单 -->
+    <div class="book-grid" id="book-grid">
+        <!-- 由 JS 动态生成 -->
+    </div>
 </div>
+
+<!-- 嵌入页面容器（抗炎生活等内容将替换这里） -->
+<div id="embedded-page">
+    <!-- 等待嵌入内容 -->
+</div>
+
+<!-- 书籍详情模态框 -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal" id="modal-content">
+        <!-- 由 JS 动态填充 -->
+    </div>
+</div>
+
+<footer>
+    📚 读书笔记 &nbsp;·&nbsp; Keep Reading, Keep Thinking &nbsp;·&nbsp; 更新时间 2026
+</footer>
+
+<script>
+// ═══════════════════════════════════════
+// 书籍数据（你的读书笔记内容在这里配置）
+// ═══════════════════════════════════════
+const books = [
+    {
+        id: 1,
+        title: '抗炎生活',
+        author: '【日】池谷敏郎',
+        category: '健康',
+        color: '#527a62',
+        icon: '🌿',
+        rating: 5,
+        progress: 0,
+        totalPages: 0,
+        tags: ['健康', '抗炎', '生活方式'],
+        description: '血管生成、激素平衡、慢性炎症……控制好体内的「慢性炎症」，就是维持年轻、远离疾病的秘诀。',
+        quote: '炎症本身并非敌人，它是我们身体自我保护的反应。真正的敌人，是慢性炎症的无声蔓延。',
+        quotePage: 'p.18',
+        coverBg: 'linear-gradient(145deg, #527a62, #6b9e80)',
+        notes: []
+    }
+];
+
+// ═══════════════════════════════════════
+// 渲染逻辑
+// ═══════════════════════════════════════
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+    renderFilters();
+    renderBooks(books);
+    animateStats();
+});
+
+// 渲染筛选标签
+function renderFilters() {
+    const cats = ['全部', ...new Set(books.map(b => b.category))];
+    const bar = document.getElementById('filter-bar');
+    bar.innerHTML = cats.map((c, i) =>
+        `<button class="filter-tag${i===0?' active':''}" onclick="filterBooks('${c}', this)">${c}</button>`
+    ).join('');
+}
+
+// 渲染书单
+function renderBooks(list) {
+    const grid = document.getElementById('book-grid');
+    if (!list.length) {
+        grid.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:60px 0;">暂无书籍</p>';
+        return;
+    }
+    grid.innerHTML = list.map(book => `
+        <div class="book-card" onclick="openModal(${book.id})">
+            <div class="card-cover" style="background:${book.coverBg};">
+                <div class="cover-pattern" style="color:#fff;"></div>
+                <div class="cover-icon">${book.icon}</div>
+                <div class="cover-title">${book.title}</div>
+            </div>
+            <div class="card-body">
+                <div class="card-meta">
+                    <span class="card-category">${book.category}</span>
+                    <span class="card-rating">${'★'.repeat(book.rating)}${'☆'.repeat(5-book.rating)}</span>
+                </div>
+                <div class="card-author">${book.author}</div>
+                ${book.totalPages ? `
+                <div class="card-progress-wrap">
+                    <div class="card-progress-label">
+                        <span>阅读进度</span>
+                        <span>${book.progress}/${book.totalPages}页</span>
+                    </div>
+                    <div class="card-progress-bar">
+                        <div class="card-progress-fill" style="width:${(book.progress/book.totalPages*100).toFixed(0)}%"></div>
+                    </div>
+                </div>` : ''}
+            </div>
+            <div class="card-footer">
+                <div class="card-tags">${book.tags.slice(0,2).map(t => `<span class="card-tag">#${t}</span>`).join('')}</div>
+                <span class="card-date">${book.tags[0]}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+// 筛选
+function filterBooks(cat, btn) {
+    document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const list = cat === '全部' ? books : books.filter(b => b.category === cat);
+    renderBooks(list);
+}
+
+// 数字动画
+function animateStats() {
+    const el = document.getElementById('stat-books');
+    const target = books.length;
+    let cur = 0;
+    const step = Math.ceil(target / 20);
+    const iv = setInterval(() => {
+        cur = Math.min(cur + step, target);
+        el.textContent = cur;
+        if (cur >= target) clearInterval(iv);
+    }, 40);
+    document.getElementById('stat-notes').textContent =
+        books.reduce((sum, b) => sum + b.notes.length, 0);
+}
+
+// 打开详情
+function openModal(id) {
+    const b = books.find(b => b.id === id);
+    if (!b) return;
+    const modal = document.getElementById('modal-content');
+    modal.innerHTML = `
+        <div class="modal-header">
+            <div class="modal-cover" style="background:${b.coverBg};font-size:48px;">
+                ${b.icon}
+            </div>
+            <div class="modal-info">
+                <h2>${b.title}</h2>
+                <div class="author">${b.author}</div>
+                <div class="modal-badges">
+                    <span class="modal-badge">${b.category}</span>
+                    <span class="modal-badge">${'★'.repeat(b.rating)}</span>
+                    ${b.tags.map(t => `<span class="modal-badge">#${t}</span>`).join('')}
+                </div>
+            </div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            ${b.description ? `
+            <div class="modal-section">
+                <div class="modal-section-title">📖 书籍简介</div>
+                <p class="modal-desc">${b.description}</p>
+            </div>` : ''}
+            ${b.quote ? `
+            <div class="modal-section">
+                <div class="modal-section-title">💬 金句摘录</div>
+                <blockquote class="modal-quote">
+                    ${b.quote}<cite>—— 《${b.title}》${b.quotePage}</cite>
+                </blockquote>
+            </div>` : ''}
+            ${b.notes && b.notes.length ? `
+            <div class="modal-section">
+                <div class="modal-section-title">📝 读书笔记</div>
+                ${b.notes.map(n => `
+                <div class="note-card">
+                    <div class="note-title">${n.title}</div>
+                    <div class="note-text">${n.text}</div>
+                    ${n.page ? `<div class="note-page">📄 ${n.page}</div>` : ''}
+                </div>`).join('')}
+            </div>` : `
+            <div class="modal-section">
+                <div class="modal-section-title">📝 读书笔记</div>
+                <p style="color:var(--text-secondary);font-size:14px;">笔记整理中，敬请期待……</p>
+            </div>`}
+        </div>
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// 导航辅助
+function showHome() {
+    document.getElementById('home-view').style.display = '';
+    document.getElementById('embedded-page').style.display = 'none';
+    document.querySelectorAll('.navbar-nav a').forEach(a => a.classList.remove('active'));
+    document.getElementById('nav-home').classList.add('active');
+}
+function showAllBooks() { filterBooks('全部', document.querySelector('.filter-tag')); window.scrollTo({top:0,behavior:'smooth'}); }
+function showTags() { window.scrollTo({top: document.querySelector('.filter-bar').offsetTop - 80, behavior:'smooth'}); }
+
+// ═══════════════════════════════════════
+// 嵌入外部页面的函数（你的 HTML 文件进来后调用这个）
+// ═══════════════════════════════════════
+function embedPage(htmlContent, title) {
+    const container = document.getElementById('embedded-page');
+    container.innerHTML = htmlContent;
+    // 调整嵌入内容的宽度
+    const style = document.createElement('style');
+    style.textContent = `
+        #embedded-page { display: block !important; }
+        #embedded-page > * { max-width: 1100px; margin: 0 auto; }
+        #embedded-page { padding: 40px 20px; }
+    `;
+    document.head.appendChild(style);
+    document.getElementById('home-view').style.display = 'none';
+    window.scrollTo(0, 0);
+}
+
+// 示例：嵌入抗炎生活页面（当你提供 HTML 时替换这里）
+// embedPage(你的抗炎生活HTML字符串, '抗炎生活');
+</script>
+
 </body>
 </html>
