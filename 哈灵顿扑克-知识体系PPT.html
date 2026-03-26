@@ -32,9 +32,7 @@ body {
 /* 导航栏 */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 60px;
   background: rgba(26,47,26,.95);
   backdrop-filter: blur(12px);
@@ -45,23 +43,8 @@ body {
   padding: 0 40px;
   z-index: 100;
 }
-.brand {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--accent);
-  text-decoration: none;
-}
-.back-btn {
-  background: var(--accent);
-  color: var(--primary);
-  padding: 8px 20px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all .2s;
-}
+.brand { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: var(--accent); text-decoration: none; }
+.back-btn { background: var(--accent); color: var(--primary); padding: 8px 20px; border-radius: 30px; text-decoration: none; font-size: 14px; font-weight: 600; transition: all .2s; }
 .back-btn:hover { background: #E8C547; transform: translateY(-1px); }
 .progress { font-size: 14px; color: rgba(255,255,255,.7); }
 
@@ -69,93 +52,37 @@ body {
 .ppt-container { padding-top: 60px; min-height: 100vh; background: #E8EFE0; }
 .slide-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; background: #E8EFE0; }
 
-.slide {
-  background: white;
-  margin-bottom: 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-  padding: 40px 50px;
-  display: none;
-  animation: fadeIn .3s ease;
-}
+.slide { background: white; margin-bottom: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,.08); padding: 40px 50px; display: none; animation: fadeIn .3s ease; }
 .slide.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 /* 幻灯片标题 */
-.slide-title {
-  font-family: 'Noto Serif SC', Georgia, serif;
-  font-size: 34px;
-  font-weight: 700;
-  color: var(--green);
-  margin-bottom: 6px;
-  border-bottom: 3px solid var(--accent);
-  padding-bottom: 14px;
-}
+.slide-title { font-family: 'Noto Serif SC', Georgia, serif; font-size: 34px; font-weight: 700; color: var(--green); margin-bottom: 6px; border-bottom: 3px solid var(--accent); padding-bottom: 14px; }
 .slide-subtitle { font-size: 17px; color: var(--text2); margin-bottom: 28px; font-weight: 300; }
 
+/* 定义卡片 */
+.def-card { background: linear-gradient(135deg, #F0F7EC, #E8F0E0); border-radius: 12px; padding: 18px 20px; margin: 16px 0; border-left: 4px solid var(--green); }
+.def-card .term { font-size: 18px; font-weight: 700; color: var(--green); margin-bottom: 6px; }
+.def-card .def { font-size: 14px; color: var(--text); line-height: 1.7; }
+
 /* 核心观点框 */
-.core-box {
-  background: linear-gradient(135deg, var(--green), var(--green2));
-  color: white;
-  padding: 28px;
-  border-radius: 12px;
-  text-align: center;
-  margin: 24px 0;
-  box-shadow: var(--shadow2);
-}
+.core-box { background: linear-gradient(135deg, var(--green), var(--green2)); color: white; padding: 28px; border-radius: 12px; text-align: center; margin: 24px 0; box-shadow: var(--shadow2); }
 .core-box h3 { font-size: 26px; margin-bottom: 10px; color: var(--accent); }
 .core-box p { font-size: 18px; opacity: 0.95; }
 
-/* 绿金核心框 */
-.gold-box {
-  background: linear-gradient(135deg, var(--accent), #E8C547);
-  color: var(--primary);
-  padding: 24px 30px;
-  border-radius: 12px;
-  text-align: center;
-  margin: 20px 0;
-}
-.gold-box h3 { font-size: 22px; margin-bottom: 8px; font-weight: 700; }
-.gold-box p { font-size: 16px; opacity: 0.85; }
-
 /* 引用框 */
-.quote-box {
-  background: linear-gradient(135deg, #F0F7EC, #E8F0E0);
-  border-left: 5px solid var(--accent);
-  padding: 20px 24px;
-  margin: 24px 0;
-  font-style: italic;
-  font-size: 17px;
-  color: var(--green);
-  border-radius: 0 12px 12px 0;
-}
+.quote-box { background: linear-gradient(135deg, #F0F7EC, #E8F0E0); border-left: 5px solid var(--accent); padding: 20px 24px; margin: 24px 0; font-style: italic; font-size: 17px; color: var(--green); border-radius: 0 12px 12px 0; }
 .quote-box cite { display: block; margin-top: 10px; font-size: 14px; color: var(--text2); font-style: normal; }
 
 /* 表格 */
 .compare-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-.compare-table th {
-  background: var(--green);
-  color: white;
-  padding: 13px 16px;
-  text-align: left;
-  font-weight: 600;
-}
-.compare-table td {
-  padding: 11px 16px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-}
+.compare-table th { background: var(--green); color: white; padding: 13px 16px; text-align: left; font-weight: 600; }
+.compare-table td { padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
 .compare-table tr:nth-child(even) { background: #F8FAF6; }
 
 /* 卡片网格 */
 .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin: 24px 0; }
-.info-card {
-  background: #F8FAF6;
-  border-radius: 12px;
-  padding: 20px;
-  border-left: 4px solid var(--green);
-  box-shadow: 0 2px 8px rgba(45,90,39,.08);
-}
+.info-card { background: #F8FAF6; border-radius: 12px; padding: 20px; border-left: 4px solid var(--green); box-shadow: 0 2px 8px rgba(45,90,39,.08); }
 .info-card h4 { color: var(--green); font-size: 17px; margin-bottom: 8px; font-weight: 600; }
 .info-card ul { margin: 0; padding-left: 18px; }
 .info-card li { margin-bottom: 5px; color: var(--text2); font-size: 14px; }
@@ -174,13 +101,6 @@ body {
 .law-card h4 { color: var(--green); font-size: 18px; margin-bottom: 10px; font-weight: 600; }
 .law-card ul { margin: 0; padding-left: 18px; }
 .law-card li { margin-bottom: 5px; color: var(--text2); font-size: 14px; }
-
-/* 策略三列 */
-.strat-col { background: white; border-radius: 14px; padding: 24px 20px; text-align: center; box-shadow: var(--shadow); margin-bottom: 18px; }
-.strat-icon { font-size: 40px; margin-bottom: 14px; }
-.strat-col h4 { color: var(--green); font-size: 17px; margin-bottom: 10px; font-weight: 600; }
-.strat-col ul { text-align: left; margin: 0; padding-left: 18px; }
-.strat-col li { margin-bottom: 6px; color: var(--text2); font-size: 14px; }
 
 /* 对比框 */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
@@ -206,15 +126,21 @@ body {
 .checklist-item:last-child { border-bottom: none; }
 
 /* 公式框 */
-.formula-box { background: #1A2F1A; color: white; padding: 20px 24px; border-radius: 12px; margin: 20px 0; text-align: center; }
+.formula-box { background: #1A2F1A; color: white; padding: 20px 24px; border-radius: 12px; margin: 20px 0; }
 .formula-box h4 { color: var(--accent); margin-bottom: 10px; font-size: 15px; }
 .formula-box p { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,.9); }
 
-/* 标签 */
-.tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
-.tag-green { background: #d4edda; color: #155724; }
-.tag-accent { background: #fff3cd; color: #856404; }
-.tag-red { background: #f8d7da; color: #721c24; }
+/* 术语高亮 */
+.term-highlight { background: linear-gradient(135deg, #FFFEF5, #F8F5E0); border: 1px solid var(--accent); border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.term-highlight .term { font-weight: 700; color: var(--green); font-size: 15px; }
+.term-highlight .desc { font-size: 14px; color: var(--text); margin-top: 4px; }
+
+/* BCT表格 */
+.bct-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+.bct-table th { background: var(--green); color: white; padding: 10px 12px; text-align: center; }
+.bct-table td { padding: 9px 12px; text-align: center; border-bottom: 1px solid var(--border); }
+.bct-table tr:nth-child(even) { background: #F8FAF6; }
+.bct-table .bct-label { text-align: left; color: var(--text); font-weight: 500; }
 
 /* 导航按钮 */
 .nav-controls { position: fixed; bottom: 24px; right: 24px; display: flex; gap: 10px; z-index: 90; }
@@ -226,8 +152,7 @@ body {
 @media (max-width: 768px) {
   .slide { padding: 28px 24px; }
   .slide-title { font-size: 26px; }
-  .card-grid, .two-col, .law-grid { grid-template-columns: 1fr; }
-  .three-col { grid-template-columns: 1fr; }
+  .card-grid, .two-col, .law-grid, .three-col { grid-template-columns: 1fr; }
   .navbar { padding: 0 20px; }
   .nav-controls { bottom: 16px; right: 16px; }
   .nav-btn { padding: 10px 18px; font-size: 13px; }
@@ -239,7 +164,7 @@ body {
 <!-- 导航栏 -->
 <nav class="navbar">
   <a href="index.html" class="brand">📚 读书笔记</a>
-  <span class="progress" id="progress">第 1 / 9 页</span>
+  <span class="progress" id="progress">第 1 / 12 页</span>
   <a href="index.html" class="back-btn">← 返回书单</a>
 </nav>
 
@@ -267,135 +192,255 @@ body {
   </div>
 </div>
 
-<!-- 第2页: 书籍概述 -->
+<!-- 第2页: 书籍概述与关键术语 -->
 <div class="slide" id="slide-2">
   <h2 class="slide-title">📖 书籍概述</h2>
-  <p class="slide-subtitle">无限注德州扑克现金游戏必读经典</p>
+  <p class="slide-subtitle">无限注德州扑克现金游戏必读经典 · 225页</p>
   
-  <div class="two-col">
+  <div class="def-card">
+    <div class="term">♠️ 什么是现金游戏（Cash Game）？</div>
+    <div class="def">用真实货币购买筹码进行对局的扑克游戏。筹码可以随时买入，输光后可以再次买入。与锦标赛不同，盲注固定不变，没有淘汰压力。</div>
+  </div>
+  
+  <div class="def-card" style="border-left-color: var(--accent); background: linear-gradient(135deg, #FFFEF5, #F8F5E0);">
+    <div class="term" style="color: var(--accent);">💰 什么是深筹码（Deep Stack）？</div>
+    <div class="def">筹码量远超盲注的游戏状态。通常超过100个大盲注（100BB）被认为是深筹码。深筹码意味着底池可以变得非常大，决策后果更严重。</div>
+  </div>
+  
+  <div class="two-col" style="margin-top: 20px;">
     <div class="compare-box cash">
-      <h4>♠️ 关于本书</h4>
+      <h4>👤 作者：Dan Harrington</h4>
       <ul>
-        <li>无限注德州扑克现金游戏策略专著</li>
-        <li>225页核心策略内容</li>
-        <li>聚焦深筹码游戏决策</li>
-        <li>理论与实战牌例结合</li>
+        <li>1982年开始职业扑克生涯</li>
+        <li>1995年WSOP主赛事冠军</li>
+        <li>绰号"Action Dan"</li>
+        <li>以稳健精准的打法著称</li>
       </ul>
     </div>
     <div class="compare-box tourney">
-      <h4>👤 作者背景</h4>
+      <h4>👤 作者：Bill Robertie</h4>
       <ul>
-        <li><strong>Dan Harrington</strong>：1982年职业扑克，1995年WSOP主赛事冠军</li>
-        <li>绰号"Action Dan"，稳健精准打法著称</li>
-        <li><strong>Bill Robertie</strong>：国际象棋大师、西洋双陆棋世界冠军</li>
+        <li>国际象棋大师</li>
+        <li>西洋双陆棋世界冠军</li>
+        <li>多本策略游戏书籍作者</li>
+        <li>《商级西洋双陆棋》作者</li>
       </ul>
     </div>
-  </div>
-  
-  <div class="quote-box">
-    "现金游戏和比赛是完全不同的游戏。大多数比赛选手转战现金桌时，都需要重新学习。"
-    <cite>— 哈灵顿</cite>
   </div>
 </div>
 
 <!-- 第3页: 四条基本定律 -->
 <div class="slide" id="slide-3">
   <h2 class="slide-title">🧠 四条基本定律</h2>
-  <p class="slide-subtitle">扑克决策的核心框架</p>
+  <p class="slide-subtitle">扑克决策的核心框架 — 所有策略的基石</p>
   
   <div class="law-grid">
     <div class="law-card">
       <div class="law-num">1</div>
-      <h4>强中弱原则</h4>
+      <h4>定律一：强中弱原则</h4>
       <ul>
-        <li>强牌 → <strong style="color:var(--green)">下注</strong>（建立底池）</li>
-        <li>中牌 → <strong style="color:var(--accent)">过牌</strong>（下注得不到回报）</li>
-        <li>弱牌 → <strong style="color:var(--red)">弃/诈唬</strong>（无价值牌）</li>
+        <li><strong style="color:var(--green)">强牌 → 下注</strong>：建立底池、让差牌付出代价</li>
+        <li><strong style="color:var(--accent)">中牌 → 过牌</strong>：下注得不到回报（好的牌会跟，差的牌会弃）</li>
+        <li><strong style="color:var(--red)">弱牌 → 弃/诈唬</strong>：无价值牌才适合诈唬</li>
       </ul>
+      <div style="margin-top:10px; padding:10px; background:#F0F7EC; border-radius:8px; font-size:13px; color:var(--text2);">
+        💡 <strong>好到可以让牌的牌</strong>：有中等强度，不强到下注，又不弱到必须诈唬，过牌最好
+      </div>
     </div>
     <div class="law-card">
       <div class="law-num">2</div>
-      <h4>主动优于被动</h4>
+      <h4>定律二：主动优于被动</h4>
       <ul>
         <li>侵略性（下注/加注）比保守更好</li>
-        <li>下注有<strong style="color:var(--green)">两种</strong>获胜方式</li>
-        <li>过牌只有<strong style="color:var(--red)">一种</strong>获胜方式</li>
+        <li><strong style="color:var(--green)">下注有2种</strong>获胜方式：让对手弃牌 + 摊牌获胜</li>
+        <li><strong style="color:var(--red)">过牌只有1种</strong>获胜方式</li>
       </ul>
+      <div style="margin-top:10px; padding:10px; background:#FFFEF5; border-radius:8px; font-size:13px; color:var(--text2);">
+        💡 <strong>弃牌收益（Folding Equity）</strong>：即使牌力不强，主动下注也可能让对手弃牌而获胜
+      </div>
     </div>
     <div class="law-card">
       <div class="law-num">3</div>
-      <h4>成功下注目标</h4>
+      <h4>定律三：成功下注的目标</h4>
       <ul>
-        <li>让比你<strong style="color:var(--green)">稍强</strong>的牌弃掉</li>
-        <li>让比你<strong style="color:var(--accent)">稍弱</strong>的牌跟注</li>
-        <li>使听牌赔率变得<strong style="color:var(--red)">不合理</strong></li>
+        <li>① 让比你<strong style="color:var(--green)">稍强</strong>的牌弃掉 ✓</li>
+        <li>② 让比你<strong style="color:var(--accent)">稍弱</strong>的牌跟注 ✓</li>
+        <li>③ 使听牌赔率变得<strong style="color:var(--red)">不合理</strong> ✓</li>
       </ul>
+      <div style="margin-top:10px; padding:10px; background:#F0F7EC; border-radius:8px; font-size:13px; color:var(--text2);">
+        ⚠️ 如果下注达不到以上任何效果，那就<strong>不要下注</strong>
+      </div>
     </div>
     <div class="law-card">
       <div class="law-num">4</div>
-      <h4>保持不可预测</h4>
+      <h4>定律四：保持不可预测</h4>
       <ul>
         <li>不要总做<strong style="color:var(--red)">同样</strong>的事</li>
-        <li>混合加注/跟注<strong style="color:var(--green)">范围</strong></li>
-        <li>始终让对手<strong style="color:var(--accent)">猜测</strong></li>
+        <li>加注范围和跟注范围<strong style="color:var(--green)">都要有</strong>强牌和弱牌</li>
+        <li>让对手无法猜测你行动的意义</li>
       </ul>
+      <div style="margin-top:10px; padding:10px; background:#FFFEF5; border-radius:8px; font-size:13px; color:var(--text2);">
+        💡 <strong>踌躇扑克</strong>：让对手无法判断你是在价值下注还是诈唬
+      </div>
     </div>
   </div>
 </div>
 
-<!-- 第4页: 数学基础 -->
+<!-- 第4页: 数学基础 - 期望值 -->
 <div class="slide" id="slide-4">
-  <h2 class="slide-title">📐 数学基础</h2>
-  <p class="slide-subtitle">期望值、赔率与出路计算</p>
+  <h2 class="slide-title">📐 数学基础：期望值与赔率</h2>
+  <p class="slide-subtitle">扑克决策的科学依据</p>
+  
+  <div class="def-card">
+    <div class="term">📊 期望值（Expected Value, EV）是什么？</div>
+    <div class="def">一个决定长期来看平均每次能赢或输多少。EV = (获胜概率 × 获胜金额) − (失败概率 × 损失金额)。<strong>选择EV最高的打法。</strong></div>
+  </div>
+  
+  <div class="term-highlight">
+    <div class="term">💡 期望值计算示例（房产投资类比）</div>
+    <div class="desc">
+      投资$410,000 → 卖得$500,000，收益=$90,000。<br>
+      但如果成功概率只有60%，EV = (60% × $90,000) − (40% × $410,000) = −$104,000。<br>
+      <strong style="color:var(--green);">结论：高收益 ≠ 高EV，还要考虑成功概率。</strong>
+    </div>
+  </div>
   
   <div class="three-col">
     <div class="stat-box">
-      <div class="stat-number">EV</div>
+      <div class="stat-number" style="font-size:24px;">EV</div>
       <div class="stat-label">
         <strong>期望值</strong><br><br>
-        EV = 赢率×金额 − 输率×损失<br><br>
-        选择EV最高的打法
+        长期平均收益<br>
+        EV > 0 → 有利可图<br>
+        EV < 0 → 应该避免
       </div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">PO</div>
+      <div class="stat-number" style="font-size:24px;">PO</div>
       <div class="stat-label">
         <strong>底池赔率</strong><br><br>
-        底池 : 跟注金额<br><br>
-        赔率 > 获胜率 → 跟注<br>
-        赔率 < 获胜率 → 弃牌
+        底池 ÷ 跟注额<br><br>
+        底池:$100，需跟$20<br>
+        赔率=5:1
       </div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">IL</div>
+      <div class="stat-number" style="font-size:24px;">IL</div>
       <div class="stat-label">
         <strong>隐含赔率</strong><br><br>
-        当前底池 + 未来可能赢得<br><br>
-        现金游戏隐含赔率更大<br>
-        表面不划算也值得
+        底池+未来可能赢得<br><br>
+        深筹码时更重要<br>
+        表面不划算可能仍值得
       </div>
     </div>
   </div>
   
-  <div class="gold-box">
-    <h3>💡 关键原则</h3>
-    <p>底池里的钱<strong>不属于任何人</strong>。不要让已经投入的钱影响当前决定。</p>
+  <div class="insight-box">
+    <div class="insight-icon">⚠️</div>
+    <p><strong>关键原则：底池里的钱不属于任何人。</strong>不要让已经投入底池的钱（沉没成本）影响当前决策。每次判断都是独立的。</p>
+  </div>
+</div>
+
+<!-- 第5页: 出路与赔率 -->
+<div class="slide" id="slide-5">
+  <h2 class="slide-title">🎯 出路计算与底池赔率</h2>
+  <p class="slide-subtitle">实战中的数学决策工具</p>
+  
+  <div class="def-card">
+    <div class="term">♠️ 什么是出路（Outs）？</div>
+    <div class="def">能使你从落后变为领先的未出现牌。例如：你有AA，对手有KK，牌面是A-7-2，你有2张A还在牌堆里——你有<strong style="color:var(--green);">2张出路</strong>。</div>
   </div>
   
   <div class="info-card">
-    <h4>📊 出路计算注意事项</h4>
+    <h4>📊 常见出路速算表（翻牌圈到转牌）</h4>
     <ul>
-      <li>有些看似出路的牌<strong style="color:var(--red)">实际上不是</strong>（对手也在抽同样的牌）</li>
-      <li>如果对手表现很强，可以直接<strong style="color:var(--green)">弃牌</strong>，不需要计算出路</li>
-      <li>经验估算是关键：<strong>近似值就够了</strong>，不用追求绝对精确</li>
+      <li><strong>1张高牌（A/K/Q/J）</strong> → 约3 outs</li>
+      <li><strong>中对子提升到三条</strong> → 约2 outs</li>
+      <li><strong>同花抽牌（4张同花）</strong> → 约9 outs</li>
+      <li><strong>两端开口顺子（4张连牌）</strong> → 约8 outs</li>
+      <li><strong>卡顺抽牌（3张连牌）</strong> → 约4 outs</li>
+      <li><strong>同花+顺子双抽</strong> → 约15 outs</li>
+    </ul>
+  </div>
+  
+  <div class="term-highlight">
+    <div class="term">💡 出路计算注意事项</div>
+    <div class="desc">
+      1. <strong style="color:var(--red);">有些看似出路实际不是</strong>：如果对手也在抽同样的牌，这些牌不能算出路<br>
+      2. <strong style="color:var(--green);">对手表现很强时</strong>：可以直接弃牌，不需要计算出路<br>
+      3. <strong>经验估算即可</strong>：不需要追求绝对精确，近似值够用
+    </div>
+  </div>
+  
+  <div class="info-card">
+    <h4>📐 底池赔率判断标准</h4>
+    <ul>
+      <li>底池赔率 < 你的获胜赔率 → <strong style="color:var(--red);">弃牌</strong></li>
+      <li>底池赔率 > 你的获胜赔率 → <strong style="color:var(--green);">跟注</strong></li>
+      <li>还要考虑<strong>隐含赔率</strong>：如果能赢大底池，表面不划算的跟注也可能正确</li>
     </ul>
   </div>
 </div>
 
-<!-- 第5页: 现金桌 vs 锦标赛 -->
-<div class="slide" id="slide-5">
+<!-- 第6页: BCT表格 -->
+<div class="slide" id="slide-6">
+  <h2 class="slide-title">💰 BCT筹码需要量表格</h2>
+  <p class="slide-subtitle">深筹码游戏的核心工具 — 你需要多少筹码才能支撑下注轮次？</p>
+  
+  <div class="def-card">
+    <div class="term">♠️ 什么是 BCT（Bet Count Table）？</div>
+    <div class="def"><strong>BCT表格</strong>告诉你：假设翻牌后按一定底池比例下注，你需要准备多少筹码才能支撑多轮下注（3-6轮）。这是深筹码游戏的核心规划工具。<br><br>
+    <strong style="color:var(--accent);">公式：BC = 下注比例 × 底池</strong></div>
+  </div>
+  
+  <table class="bct-table">
+    <tr>
+      <th>下注比例</th>
+      <th>4轮下注<br>（约需BB）</th>
+      <th>5轮下注<br>（约需BB）</th>
+      <th>6轮下注<br>（约需BB）</th>
+    </tr>
+    <tr>
+      <td class="bct-label">1/2 底池</td>
+      <td>~15 BB</td>
+      <td>~31 BB</td>
+      <td>~63 BB</td>
+    </tr>
+    <tr>
+      <td class="bct-label">2/3 底池</td>
+      <td>~20 BB</td>
+      <td>~48 BB</td>
+      <td>~113 BB</td>
+    </tr>
+    <tr>
+      <td class="bct-label">3/4 底池</td>
+      <td>~24 BB</td>
+      <td>~62 BB</td>
+      <td>~156 BB</td>
+    </tr>
+    <tr>
+      <td class="bct-label">全底池</td>
+      <td>~35 BB</td>
+      <td>~107 BB</td>
+      <td>~323 BB</td>
+    </tr>
+  </table>
+  
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>实战应用：</strong>如果你有100BB，想在翻牌用2/3底池下注并计划持续开枪，你只能支撑约4轮。要么减少下注比例，要么减少开枪轮次。</p>
+  </div>
+</div>
+
+<!-- 第7页: 现金桌 vs 锦标赛 -->
+<div class="slide" id="slide-7">
   <h2 class="slide-title">🃏 现金桌 vs 锦标赛</h2>
-  <p class="slide-subtitle">两种游戏的核心差异</p>
+  <p class="slide-subtitle">两种游戏的本质区别</p>
+  
+  <div class="def-card">
+    <div class="term">⚠️ 核心区别：筹码深度</div>
+    <div class="def">现金桌永远是<strong>深筹码</strong>（通常100BB+），而锦标赛随盲注增长会变浅。深筹码游戏中，顶对顶脚（TPTK）可能只是<strong style="color:var(--accent);">中等牌</strong>。</div>
+  </div>
   
   <table class="compare-table">
     <tr>
@@ -405,11 +450,11 @@ body {
     </tr>
     <tr>
       <td><strong>筹码深度</strong></td>
-      <td>永远深筹码（通常100BB+）</td>
+      <td>永远深筹码（100BB+）</td>
       <td>随盲注增长逐渐变浅</td>
     </tr>
     <tr>
-      <td><strong>买入</strong></td>
+      <td><strong>买入方式</strong></td>
       <td>可反复买入，无限重购</td>
       <td>淘汰即出局，无法重买</td>
     </tr>
@@ -419,71 +464,83 @@ body {
       <td>持续增长（时间压力）</td>
     </tr>
     <tr>
+      <td><strong>决策时间</strong></td>
+      <td>无限制</td>
+      <td>盲注上涨带来时间压力</td>
+    </tr>
+    <tr>
       <td><strong>策略复杂度</strong></td>
-      <td><strong style="color:var(--green)">更高</strong> — 深层思考</td>
+      <td><strong style="color:var(--green);">更高</strong> — 深层思考</td>
       <td>相对较低 — 有限决策</td>
     </tr>
   </table>
   
-  <div class="insight-box">
-    <div class="insight-icon">💡</div>
-    <p><strong>关键洞察：</strong>深筹码游戏的决策复杂性远超锦标赛。位置、底池赔率、弃牌收益等因素被大幅放大。</p>
-  </div>
-  
   <div class="quote-box">
     "比赛高手转现金桌需要重新学习，不能套用比赛思维。"
   </div>
-</div>
-
-<!-- 第6页: 核心策略要点 -->
-<div class="slide" id="slide-6">
-  <h2 class="slide-title">🎯 核心策略要点</h2>
-  <p class="slide-subtitle">位置、平衡与深筹码思维</p>
   
-  <div class="card-grid">
-    <div class="info-card">
-      <h4>🪑 位置的重要性</h4>
-      <ul>
-        <li>庄家位置（Button）最有利</li>
-        <li>枪口位置（UTG）最差</li>
-        <li>深筹码游戏中位置差异被<strong style="color:var(--green)">放大</strong></li>
-        <li>好位置获得翻牌后信息优势</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <h4>⚖️ 平衡与不可预测</h4>
-      <ul>
-        <li>优秀的打法是<strong style="color:var(--green)">平衡的艺术</strong></li>
-        <li>混合不同行动，不让对手读懂</li>
-        <li>加注范围和跟注范围都要有强有弱</li>
-        <li>不总用坚果牌在河牌下注</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <h4>🧠 深筹码思维</h4>
-      <ul>
-        <li>顶对顶脚（TPTK）可能只是<strong style="color:var(--accent)">中等牌</strong></li>
-        <li>需要多层次的策略思考</li>
-        <li>耐心等待好机会"打本垒打"</li>
-        <li>始终关注对手在做什么</li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <h4>🃏 翻牌后策略</h4>
-      <ul>
-        <li><strong style="color:var(--green)">干燥牌面</strong> → 小注拿下底池</li>
-        <li><strong style="color:var(--accent)">湿润牌面</strong> → 大注阻止听牌</li>
-        <li>危险牌面不要慢打</li>
-        <li>下注前问：这个下注能达到什么目的？</li>
-      </ul>
-    </div>
+  <div class="checklist">
+    <h4>🎯 比赛转现金桌的常见错误</h4>
+    <div class="checklist-item"><strong>过度激进</strong>：比赛需要抢盲注，现金桌不需要</div>
+    <div class="checklist-item"><strong>低估深筹码</strong>：TPTK在比赛中很强，在现金桌可能只是中等牌</div>
+    <div class="checklist-item"><strong>不耐心</strong>：现金桌不需要急，等待好机会"打本垒打"</div>
   </div>
 </div>
 
-<!-- 第7页: 下注尺度 -->
-<div class="slide" id="slide-7">
+<!-- 第8页: 位置与起手牌 -->
+<div class="slide" id="slide-8">
+  <h2 class="slide-title">🪑 位置与起手牌选择</h2>
+  <p class="slide-subtitle">利用位置优势，控制入池范围</p>
+  
+  <div class="def-card">
+    <div class="term">🪑 位置为什么重要？</div>
+    <div class="def">位置决定你<strong>获取信息的顺序</strong>。后位玩家可以看到更多对手的行动后再做决定，从而获得信息优势。深筹码游戏中，位置差异被大幅放大。</div>
+  </div>
+  
+  <div class="two-col">
+    <div class="compare-box cash">
+      <h4>📍 位置优劣排序</h4>
+      <ul>
+        <li><strong style="color:var(--green);">最佳：庄家位（Button）</strong></li>
+        <li> cutoff位（庄家下一位）</li>
+        <li> 中后位置</li>
+        <li> 中段位置</li>
+        <li> 前段位置</li>
+        <li><strong style="color:var(--red);">最差：枪口位（UTG）</strong></li>
+      </ul>
+    </div>
+    <div class="compare-box tourney">
+      <h4>📍 大盲注的特殊性</h4>
+      <ul>
+        <li>已经投入了盲注</li>
+        <li>底池比例天然较好</li>
+        <li>但处于前段位置（第一个行动）</li>
+        <li>需要平衡：跟注范围 vs 弃牌</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="info-card">
+    <h4>📋 翻牌前起手牌分类（后段位置参考）</h4>
+    <ul>
+      <li><strong style="color:var(--green);">总是玩：</strong>AA/KK/QQ、AK/AQs/AQ</li>
+      <li><strong style="color:var(--accent);">有时候玩：</strong>AJs/AJo/KQs/KQo、77-TT</li>
+      <li><strong style="color:var(--text2);">偶尔玩：</strong>JTs/T9s、ATo/KJo</li>
+      <li><strong style="color:var(--red);">从不玩：</strong>72o、83o（低效牌力）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 第9页: 下注尺度 -->
+<div class="slide" id="slide-9">
   <h2 class="slide-title">💰 下注尺度指南</h2>
-  <p class="slide-subtitle">不同场景的下注选择</p>
+  <p class="slide-subtitle">不同场景的下
+注决策</p>
+  
+  <div class="def-card">
+    <div class="term">♠️ 什么是下注尺度？</div>
+    <div class="def">下注量相对于底池大小的比例。不同的下注比例传递不同的信息，也会给对手不同的底池赔率。</div>
+  </div>
   
   <table class="compare-table">
     <tr>
@@ -507,29 +564,96 @@ body {
       <td>强牌保护、阻止听牌</td>
     </tr>
     <tr>
-      <td><strong>超注</strong> (超过底池)</td>
+      <td><strong>超注</strong> (>100%底池)</td>
       <td>>33%</td>
-      <td>极端情况、榨取价值、吓阻</td>
+      <td>极端榨取、吓阻诈唬</td>
     </tr>
   </table>
   
-  <div class="formula-box">
-    <h4>✅ 成功下注必须做到至少一件：</h4>
-    <p>
-      ① 让比你<strong style="color:var(--accent)">稍强</strong>的牌弃掉　✓<br>
-      ② 让比你<strong style="color:var(--accent)">稍弱</strong>的牌跟注　✓<br>
-      ③ 使听牌赔率变得<strong style="color:var(--accent)">不合理</strong>　✓
-    </p>
+  <div class="insight-box">
+    <div class="insight-icon">⚠️</div>
+    <p><strong>再加注时：</strong>2/3到1个底池之间，而不是更小。下注太小容易被跟注，太大失去效率。</p>
+  </div>
+</div>
+
+<!-- 第10页: 平衡打法 -->
+<div class="slide" id="slide-10">
+  <h2 class="slide-title">⚖️ 平衡与不可预测</h2>
+  <p class="slide-subtitle">让对手永远猜不透你的打法</p>
+  
+  <div class="def-card">
+    <div class="term">♠️ 什么是平衡（Balance）？</div>
+    <div class="def">在相同情况下，混合使用不同强度的牌做同样的行动。例如：部分强牌加注，部分中等牌也加注；部分弱牌诈唬，部分强牌也过牌。</div>
+  </div>
+  
+  <div class="info-card">
+    <h4>🎯 平衡的核心原则</h4>
+    <ul>
+      <li><strong>加注范围</strong>：既有强牌（AA/KK），也有中等牌（TT/AQ），还有弱牌（KT/suited connectors）</li>
+      <li><strong>跟注范围</strong>：既有听牌，也有成手牌，也有纯抓诈唬的牌</li>
+      <li><strong>下注范围</strong>：有时用坚果牌下注，有时用空气牌下注</li>
+    </ul>
+  </div>
+  
+  <div class="term-highlight">
+    <div class="term">💡 平衡示例：翻牌圈过牌后的行动</div>
+    <div class="desc">
+      如果翻牌你过牌了，对手会猜测你可能有：<br>
+      · 坚果牌（设陷阱）<br>
+      · 中等牌力（谨慎）<br>
+      · 弱牌（考虑诈唬）<br>
+      <strong style="color:var(--green);">只有当你确实有这种范围分布时，平衡才有效。</strong>
+    </div>
+  </div>
+  
+  <div class="checklist">
+    <h4>📋 不同翻牌面的下注频率参考</h4>
+    <div class="checklist-item"><strong>情况1：</strong>有好位置 + 干燥牌面 → 下注80%，过牌20%</div>
+    <div class="checklist-item"><strong>情况2：</strong>有中对子 + 湿润牌面（听牌多） → 下注30%，过牌70%</div>
+    <div class="checklist-item"><strong>情况3：</strong>有坚果牌 + 危险牌面 → 下注70%，加注30%</div>
+  </div>
+</div>
+
+<!-- 第11页: 翻牌后策略 -->
+<div class="slide" id="slide-11">
+  <h2 class="slide-title">🎯 翻牌后核心策略</h2>
+  <p class="slide-subtitle">干燥 vs 湿润牌面、转牌决策</p>
+  
+  <div class="def-card">
+    <div class="term">♠️ 干燥牌面 vs 湿润牌面</div>
+    <div class="def">
+      <strong>干燥牌面</strong>：牌面没有太多听牌（如同花、顺子）的可能 → 可以用较小的下注拿下底池<br>
+      <strong>湿润牌面</strong>：牌面有很多听牌存在 → 需要更大的下注来阻止对手的隐含赔率
+    </div>
+  </div>
+  
+  <div class="info-card">
+    <h4>📋 转牌决策三问</h4>
+    <ul>
+      <li>① 我的牌<strong>领先很多</strong>还是<strong>落后很多</strong>？</li>
+      <li>② 对手跟注的范围<strong>合理吗</strong>？</li>
+      <li>③ 如果转牌再开一枪，对手会<strong>怎么反应</strong>？</li>
+    </ul>
+  </div>
+  
+  <div class="term-highlight">
+    <div class="term">💡 跟注 vs 加注的比例</div>
+    <div class="desc">
+      在湿润牌面，如果你有听牌：<br>
+      · <strong>80%跟注</strong>，20%加注（混合打法）<br>
+      · 如果加注：对手可能以为你在听牌，转牌没中会继续下注<br>
+      <strong style="color:var(--green);">关键是让对手无法读懂你的范围。</strong>
+    </div>
   </div>
   
   <div class="insight-box">
     <div class="insight-icon">⚠️</div>
-    <p><strong>再加注时：</strong>2/3到1个底池之间，而不是更小。下注太小容易被跟注，下注太大失去效率。</p>
+    <p><strong>慢打的条件：</strong>牌面相对安全 + 对手不太可能击中好牌。风险：给对手免费卡。危险牌面时不要慢打。</p>
   </div>
 </div>
 
-<!-- 第8页: 核心总结 -->
-<div class="slide" id="slide-8">
+<!-- 第12页: 核心总结 -->
+<div class="slide" id="slide-12">
   <h2 class="slide-title">🔑 核心总结</h2>
   <p class="slide-subtitle">从书中提炼的关键要点</p>
   
@@ -556,27 +680,11 @@ body {
     <h3>核心公式</h3>
     <p><strong>好决策 = 正确的数学计算 + 对手的合理假设 + 平衡的打法</strong></p>
   </div>
-</div>
-
-<!-- 第9页: 结束 -->
-<div class="slide" id="slide-9">
-  <div style="background: linear-gradient(135deg, #1A2F1A 0%, #2D5A27 100%); border-radius: 16px; padding: 60px 40px; text-align: center; margin: -10px -10px 0;">
-    <div style="font-size: 64px; margin-bottom: 20px;">♠️ ♥️ ♦️ ♣️</div>
-    <h2 style="font-family: 'Noto Serif SC', serif; font-size: 32px; color: white; margin-bottom: 16px;">感谢阅读</h2>
-    <p style="font-size: 18px; color: var(--accent); margin-bottom: 24px;">Keep Reading, Keep Thinking</p>
-    <div style="background: rgba(255,255,255,.1); border-radius: 8px; padding: 20px 30px; display: inline-block;">
-      <p style="font-size: 15px; color: rgba(255,255,255,.9); line-height: 1.8;">
-        读书笔记自动生成<br>
-        基于《哈灵顿在现金桌（卷一）》原文提取
-      </p>
-    </div>
-  </div>
   
-  <div class="checklist" style="margin-top: 24px;">
-    <h4>📚 更多书籍笔记</h4>
-    <div class="checklist-item">抗炎生活 — 池谷敏郎</div>
-    <div class="checklist-item">非暴力沟通 — 马歇尔·卢森堡</div>
-    <div class="checklist-item">哈灵顿在现金桌 — Dan Harrington</div>
+  <div style="background: linear-gradient(135deg, #1A2F1A, #2D5A27); border-radius: 16px; padding: 40px; text-align: center; margin-top: 20px; color: white;">
+    <div style="font-size: 32px; margin-bottom: 16px;">♠️ ♥️ ♦️ ♣️</div>
+    <h2 style="font-family: 'Noto Serif SC', serif; font-size: 28px; margin-bottom: 12px; color: var(--accent);">感谢阅读</h2>
+    <p style="font-size: 16px; color: rgba(255,255,255,.8);">Keep Reading, Keep Thinking</p>
   </div>
 </div>
 
@@ -591,39 +699,26 @@ body {
 
 <script>
 let currentSlide = 1;
-const totalSlides = 9;
+const totalSlides = 12;
 
 function showSlide(n) {
-  // Hide all
   for (let i = 1; i <= totalSlides; i++) {
     document.getElementById('slide-' + i).classList.remove('active');
   }
-  // Show current
   document.getElementById('slide-' + n).classList.add('active');
-  // Update progress
   document.getElementById('progress').textContent = '第 ' + n + ' / ' + totalSlides + ' 页';
-  // Update buttons
   document.getElementById('prevBtn').disabled = (n === 1);
   document.getElementById('nextBtn').disabled = (n === totalSlides);
 }
 
 function nextSlide() {
-  if (currentSlide < totalSlides) {
-    currentSlide++;
-    showSlide(currentSlide);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  if (currentSlide < totalSlides) { currentSlide++; showSlide(currentSlide); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 }
 
 function prevSlide() {
-  if (currentSlide > 1) {
-    currentSlide--;
-    showSlide(currentSlide);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  if (currentSlide > 1) { currentSlide--; showSlide(currentSlide); window.scrollTo({ top: 0, behavior: 'smooth' }); }
 }
 
-// Keyboard navigation
 document.addEventListener('keydown', function(e) {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
