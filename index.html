@@ -615,6 +615,27 @@ const books = [
         quotePage: 'p.1',
         coverBg: 'linear-gradient(145deg, #8b5e3c, #a0724a)',
         notes: []
+    },
+    {
+        id: 3,
+        title: '哈灵顿在现金桌（卷一）',
+        author: 'Dan Harrington & Bill Robertie',
+        category: '扑克策略',
+        color: '#2D5A27',
+        icon: '♠️',
+        rating: 5,
+        progress: 225,
+        totalPages: 225,
+        tags: ['扑克', '德州扑克', '现金桌', '策略'],
+        description: '无限注德州扑克现金游戏策略经典。WSOP冠军哈灵顿教你深筹码游戏的艺术。',
+        quote: '现金游戏实际上比锦标赛更难掌握，因为它需要更深层次的策略思维。',
+        quotePage: 'p.1',
+        coverBg: 'linear-gradient(145deg, #1A2F1A, #2D5A27)',
+        notes: [
+            { title: '四条基本定律', text: '强中弱原则、主动优于被动、成功下注目标、保持不可预测', page: '核心框架' },
+            { title: '数学基础', text: '期望值(EV)、底池赔率、隐含赔率、出路计算', page: '第1章' },
+            { title: '现金桌vs锦标赛', text: '筹码深度、买入方式、时间压力的核心差异', page: '基础概念' }
+        ]
     }
 ];
 
@@ -704,7 +725,8 @@ function animateStats() {
 function openModal(id) {
     const pptMap = {
         1: 'anti-inflammatory-ppt.html',
-        2: '非暴力沟通--知识体系PPT.html'
+        2: '非暴力沟通--知识体系PPT.html',
+        3: '哈灵顿扑克-知识体系PPT.html'
     };
     window.location.href = pptMap[id] || 'index.html';
 }
