@@ -708,51 +708,6 @@ function openModal(id) {
     };
     window.location.href = pptMap[id] || 'index.html';
 }
-                <div class="modal-badges">
-                    <span class="modal-badge">${b.category}</span>
-                    <span class="modal-badge">${'★'.repeat(b.rating)}</span>
-                    ${b.tags.map(t => `<span class="modal-badge">#${t}</span>`).join('')}
-                </div>
-            </div>
-            <button class="modal-close" onclick="closeModal()">✕</button>
-        </div>
-        <div class="modal-body">
-            ${b.description ? `
-            <div class="modal-section">
-                <div class="modal-section-title">📖 书籍简介</div>
-                <p class="modal-desc">${b.description}</p>
-            </div>` : ''}
-            ${b.quote ? `
-            <div class="modal-section">
-                <div class="modal-section-title">💬 金句摘录</div>
-                <blockquote class="modal-quote">
-                    ${b.quote}<cite>—— 《${b.title}》${b.quotePage}</cite>
-                </blockquote>
-            </div>` : ''}
-            ${b.notes && b.notes.length ? `
-            <div class="modal-section">
-                <div class="modal-section-title">📝 读书笔记</div>
-                ${b.notes.map(n => `
-                <div class="note-card">
-                    <div class="note-title">${n.title}</div>
-                    <div class="note-text">${n.text}</div>
-                    ${n.page ? `<div class="note-page">📄 ${n.page}</div>` : ''}
-                </div>`).join('')}
-            </div>` : `
-            <div class="modal-section">
-                <div class="modal-section-title">📝 读书笔记</div>
-                <p style="color:var(--text-secondary);font-size:14px;">笔记整理中，敬请期待……</p>
-            </div>`}
-        </div>
-    `;
-    document.getElementById('modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-    document.getElementById('modal-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-}
 
 // 导航辅助
 function showHome() {
