@@ -636,6 +636,27 @@ const books = [
             { title: '数学基础', text: '期望值(EV)、底池赔率、隐含赔率、出路计算', page: '第1章' },
             { title: '现金桌vs锦标赛', text: '筹码深度、买入方式、时间压力的核心差异', page: '基础概念' }
         ]
+    },
+    {
+        id: 4,
+        title: '背包客手册',
+        author: 'Chris Townsend',
+        category: '户外旅行',
+        color: '#2C4A2E',
+        icon: '🏔️',
+        rating: 5,
+        progress: 320,
+        totalPages: 320,
+        tags: ['背包旅行', '户外', '轻量化', '荒野技能'],
+        description: '背包旅行领域的权威圣经。英国著名徒步旅行家Townsend将数十年极限长途徒步经验系统化，从装备选择到荒野技能全面覆盖。',
+        quote: '轻量化不是目的，而是手段。真正的目标是在荒野中自由移动，深度体验自然。',
+        quotePage: '核心理念',
+        coverBg: 'linear-gradient(145deg, #1A3A1C, #3D6B40)',
+        notes: [
+            { title: '装备系统', text: '庇护所、睡眠系统、背包、服装三层系统、炉具选择', page: '装备篇' },
+            { title: '导航技能', text: '等高线读图、磁偏角修正、三角定位法、GPS辅助', page: '技能篇' },
+            { title: '安全与急救', text: '低体温症识别处理、高原反应预防、水源处理方法', page: '安全篇' }
+        ]
     }
 ];
 
@@ -726,7 +747,8 @@ function openModal(id) {
     const pptMap = {
         1: 'anti-inflammatory-ppt.html',
         2: '非暴力沟通--知识体系PPT.html',
-        3: '哈灵顿扑克-知识体系PPT.html'
+        3: '哈灵顿扑克-知识体系PPT.html',
+        4: '背包客手册--知识体系PPT.html'
     };
     window.location.href = pptMap[id] || 'index.html';
 }
