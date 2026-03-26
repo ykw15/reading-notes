@@ -598,6 +598,23 @@ const books = [
         quotePage: 'p.18',
         coverBg: 'linear-gradient(145deg, #527a62, #6b9e80)',
         notes: []
+    },
+    {
+        id: 2,
+        title: '非暴力沟通',
+        author: '【美】马歇尔·卢森堡',
+        category: '心理学',
+        color: '#8b5e3c',
+        icon: '💬',
+        rating: 5,
+        progress: 0,
+        totalPages: 0,
+        tags: ['心理学', '沟通', '人际关系'],
+        description: '非暴力沟通是一种沟通方法，旨在帮助人们以同情心和真诚的方式进行交流，从而建立更深层的人际连接。',
+        quote: '非暴力沟通不仅是一种沟通技巧，更是一种生活方式。',
+        quotePage: 'p.1',
+        coverBg: 'linear-gradient(145deg, #8b5e3c, #a0724a)',
+        notes: []
     }
 ];
 
@@ -685,16 +702,12 @@ function animateStats() {
 
 // 打开详情 - 跳转到PPT播放器
 function openModal(id) {
-    window.location.href = 'anti-inflammatory-ppt.html';
-    const modal = document.getElementById('modal-content');
-    modal.innerHTML = `
-        <div class="modal-header">
-            <div class="modal-cover" style="background:${b.coverBg};font-size:48px;">
-                ${b.icon}
-            </div>
-            <div class="modal-info">
-                <h2>${b.title}</h2>
-                <div class="author">${b.author}</div>
+    const pptMap = {
+        1: 'anti-inflammatory-ppt.html',
+        2: '非暴力沟通--知识体系PPT.html'
+    };
+    window.location.href = pptMap[id] || 'index.html';
+}
                 <div class="modal-badges">
                     <span class="modal-badge">${b.category}</span>
                     <span class="modal-badge">${'★'.repeat(b.rating)}</span>
