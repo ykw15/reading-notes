@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>户外急救书籍评析 - PPT读书笔记</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+:root {
+  --bg: #FDF8F5;
+  --card: #fff;
+  --primary: #8B2500;
+  --red: #C41E3A;
+  --red2: #CD5C5C;
+  --accent: #D4A574;
+  --brown: #6B4423;
+  --text: #1A1A1A;
+  --text2: #6B5B4F;
+  --border: #E8D8D0;
+  --shadow: 0 4px 20px rgba(139,37,0,.12);
+  --shadow2: 0 8px 32px rgba(139,37,0,.18);
+  --green: #2E7D32;
+  --blue: #1565C0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans SC', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+
+/* 导航栏 */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 60px;
+  background: rgba(139,37,0,.96); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212,165,116,.3);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; z-index: 100;
+}
+.brand { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: var(--accent); text-decoration: none; }
+.back-btn { background: var(--accent); color: var(--primary); padding: 8px 20px; border-radius: 30px; text-decoration: none; font-size: 14px; font-weight: 600; transition: all .2s; }
+.back-btn:hover { background: #E8BC8A; transform: translateY(-1px); }
+.progress { font-size: 14px; color: rgba(255,255,255,.7); }
+
+/* 版本标签 */
+.version-badge {
+  position: fixed; top: 70px; right: 24px;
+  background: rgba(139,37,0,.85); color: var(--accent);
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  border: 1px solid rgba(212,165,116,.4); z-index: 90;
+  font-family: monospace;
+}
+
+/* PPT 容器 */
+.ppt-container { padding-top: 60px; min-height: 100vh; }
+.slide-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+.slide { background: white; margin-bottom: 20px; border-radius: 16px; box-shadow: var(--shadow); padding: 40px 50px; display: none; animation: fadeIn .3s ease; }
+.slide.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.slide-title { font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700; color: var(--primary); margin-bottom: 6px; border-bottom: 3px solid var(--accent); padding-bottom: 14px; }
+.slide-subtitle { font-size: 16px; color: var(--text2); margin-bottom: 28px; font-weight: 300; }
+
+.def-card { background: linear-gradient(135deg, #FDF2F0, #F8E8E4); border-radius: 12px; padding: 18px 22px; margin: 14px 0; border-left: 4px solid var(--red); }
+.def-card .term { font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.def-card .def { font-size: 14px; color: var(--text); line-height: 1.8; }
+.def-card .def strong { color: var(--red); }
+
+.core-box { background: linear-gradient(135deg, var(--primary), var(--red)); color: white; padding: 28px; border-radius: 14px; text-align: center; margin: 24px 0; box-shadow: var(--shadow2); }
+.core-box h3 { font-size: 24px; margin-bottom: 10px; color: var(--accent); font-family: 'Noto Serif SC', serif; }
+.core-box p { font-size: 16px; opacity: .95; line-height: 1.8; }
+
+.quote-box { background: linear-gradient(135deg, #F8F0E8, #F0E4D8); border-left: 5px solid var(--accent); padding: 20px 24px; margin: 20px 0; font-style: italic; font-size: 16px; color: var(--brown); border-radius: 0 12px 12px 0; }
+.quote-box cite { display: block; margin-top: 8px; font-size: 13px; color: var(--text2); font-style: normal; }
+
+.data-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13.5px; }
+.data-table th { background: var(--primary); color: white; padding: 12px 14px; text-align: left; font-weight: 600; }
+.data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.data-table tr:nth-child(even) { background: #FDFAF8; }
+.data-table .label { font-weight: 600; color: var(--primary); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+.col-card { background: #FDFAF8; border-radius: 12px; padding: 22px; border-top: 4px solid var(--red); }
+.col-card.accent { border-top-color: var(--accent); }
+.col-card.green { border-top-color: var(--green); }
+.col-card.blue { border-top-color: var(--blue); }
+.col-card h4 { color: var(--primary); font-size: 16px; margin-bottom: 12px; font-weight: 600; }
+.col-card ul { margin: 0; padding-left: 18px; }
+.col-card li { margin-bottom: 6px; color: var(--text2); font-size: 14px; line-height: 1.6; }
+
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+.stat-box { background: white; border-radius: 12px; padding: 20px 14px; text-align: center; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(139,37,0,.06); }
+.stat-number { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.stat-label { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+.info-card { background: white; border-radius: 12px; padding: 18px; border: 1px solid var(--border); text-align: center; }
+.info-card h4 { color: var(--primary); font-size: 15px; margin-bottom: 8px; }
+.info-card p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+
+.star-rating { color: var(--accent); font-size: 14px; }
+.insight-box { background: linear-gradient(135deg, #FFF8E7, #FFF3D6); border-radius: 12px; padding: 18px 22px; margin: 16px 0; border-left: 4px solid var(--accent); display: flex; gap: 12px; align-items: flex-start; }
+.insight-icon { font-size: 20px; flex-shrink: 0; }
+.insight-box p { font-size: 14px; color: var(--text); line-height: 1.7; }
+
+.checklist { background: #FDFAF8; border-radius: 12px; padding: 18px; margin: 16px 0; }
+.checklist h4 { color: var(--primary); margin-bottom: 12px; font-size: 15px; }
+.checklist-item { padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: 14px; color: var(--text2); }
+.checklist-item:last-child { border-bottom: none; }
+
+/* 导航控制 */
+.nav-controls { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; align-items: center; background: white; padding: 12px 24px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,.15); z-index: 100; }
+.nav-btn { background: var(--primary); color: white; border: none; padding: 10px 24px; border-radius: 30px; cursor: pointer; font-size: 14px; font-weight: 500; transition: all .2s; }
+.nav-btn:hover { background: var(--red); transform: translateY(-1px); }
+.nav-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .slide { padding: 24px 20px; }
+  .slide-title { font-size: 24px; }
+  .two-col, .three-col, .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html" class="brand">📚 读书笔记</a>
+  <a href="index.html" class="back-btn">← 返回首页</a>
+  <div class="progress" id="progress">第 1 / 13 页</div>
+</div>
+<div class="version-badge">v1.0.5</div>
+
+<div class="ppt-container">
+<div class="slide-wrapper">
+
+<!-- 第1页: 封面 -->
+<div class="slide active" id="slide-1">
+  <div style="text-align: center; padding: 60px 0;">
+    <div style="font-size: 64px; margin-bottom: 24px;">🩺</div>
+    <h1 style="font-family: 'Noto Serif SC', serif; font-size: 42px; color: var(--primary); margin-bottom: 16px;">户外急救书籍评析</h1>
+    <p style="font-size: 20px; color: var(--text2); margin-bottom: 40px;">5本权威急救书的全面对比与推荐</p>
+    <div style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;">
+      <div class="stat-box" style="min-width: 120px;">
+        <div class="stat-number" style="font-size: 36px;">5</div>
+        <div class="stat-label">本权威书籍</div>
+      </div>
+      <div class="stat-box" style="min-width: 120px;">
+        <div class="stat-number" style="font-size: 36px;">3</div>
+        <div class="stat-label">种推荐组合</div>
+      </div>
+      <div class="stat-box" style="min-width: 120px;">
+        <div class="stat-number" style="font-size: 36px;">6</div>
+        <div class="stat-label">个评分维度</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 第2页: 概览表格 -->
+<div class="slide" id="slide-2">
+  <h2 class="slide-title">📚 五本书概览</h2>
+  <p class="slide-subtitle">权威性、便携性与适用场景对比</p>
+  
+  <table class="data-table">
+    <tr><th>书名</th><th>作者/机构</th><th>厚度</th><th>定位</th><th>适合人群</th></tr>
+    <tr><td class="label">Wilderness First Aid</td><td>AAOS/Thygerson</td><td>600+页</td><td>教材</td><td>荒野急救学员</td></tr>
+    <tr><td class="label">Wilderness First Aid Field Guide</td><td>Thygerson/AAOS</td><td>400+页</td><td>便携参考</td><td>徒步者、向导</td></tr>
+    <tr><td class="label">Wilderness Medicine</td><td>Paul Auerbach</td><td>1800+页</td><td>权威百科</td><td>医疗专业人员</td></tr>
+    <tr><td class="label">Medicine for Mountaineering</td><td>James Wilkerson</td><td>350+页</td><td>登山医学</td><td>登山者</td></tr>
+    <tr><td class="label">Prepper's Medical Handbook</td><td>William Forgey</td><td>300+页</td><td>场景化配置</td><td>应急预备者</td></tr>
+  </table>
+  
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>核心观点：</strong>工具书是辅助，知识与技能才是核心。没有一本急救手册能替代真正的急救培训。</p>
+  </div>
+</div>
+
+<!-- 第3页: 评分对比 -->
+<div class="slide" id="slide-3">
+  <h2 class="slide-title">📊 六维度评分对比</h2>
+  <p class="slide-subtitle">各书在关键维度上的表现</p>
+  
+  <table class="data-table">
+    <tr><th>维度</th><th>WFA教材</th><th>WFA指南</th><th>Wilderness Med.</th><th>Mt. Medicine</th><th>Prepper's</th></tr>
+    <tr><td class="label">权威性</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><td class="label">便携性</td><td>⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+    <tr><td class="label">实用性</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td></tr>
+    <tr><td class="label">深度</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><td class="label">广度</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><td class="label">药品内容</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td></tr>
+  </table>
+</div>
+
+<!-- 第4页: Wilderness First Aid 教材 -->
+<div class="slide" id="slide-4">
+  <h2 class="slide-title">📖 Wilderness First Aid</h2>
+  <p class="slide-subtitle">AAOS / Alton L. Thygerson 主编 | 行业标准教材</p>
+  
+  <div class="def-card">
+    <div class="term">定位</div>
+    <div class="def">荒野急救认证课程（WFA/WFR）的标准教材，美国骨科医师学会（AAOS）背书，是全球荒野急救领域的行业标准。</div>
+  </div>
+  
+  <div class="two-col">
+    <div class="col-card">
+      <h4>📚 核心内容</h4>
+      <ul>
+        <li>伤病评估系统（PAS）</li>
+        <li>生命体征监测</li>
+        <li>创伤处理与感染预防</li>
+        <li>骨折与关节损伤固定</li>
+        <li>脊柱损伤处理</li>
+        <li>环境伤害（高山/热/冷/水）</li>
+        <li>医疗紧急情况</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>⭐ 评价</h4>
+      <ul>
+        <li><strong>权威性：⭐⭐⭐⭐⭐</strong><br>行业标准，AAOS背书</li>
+        <li><strong>实用性：⭐⭐⭐⭐</strong><br>适合系统学习</li>
+        <li><strong>便携性：⭐⭐</strong><br>太厚，不适合随身携带</li>
+        <li><strong>深度：⭐⭐⭐⭐⭐</strong><br>非常全面</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="insight-box">
+    <div class="insight-icon">🎯</div>
+    <p><strong>适合谁：</strong>参加荒野急救认证课程的学员首选教材。不适合作为随身参考。</p>
+  </div>
+</div>
+
+<!-- 第5页: Wilderness First Aid 现场指南 -->
+<div class="slide" id="slide-5">
+  <h2 class="slide-title">📖 Wilderness First Aid Field Guide</h2>
+  <p class="slide-subtitle">Thygerson / AAOS | 便携速查手册</p>
+  
+  <div class="def-card">
+    <div class="term">定位</div>
+    <div class="def">完全以流程图和速查表呈现的设计，可在野外现场直接查阅。防水纸张，彩色标签分区，5秒内定位到所需章节。</div>
+  </div>
+  
+  <div class="three-col">
+    <div class="stat-box" style="border-left: 4px solid #C41E3A;">
+      <div style="font-size: 24px; margin-bottom: 8px;">🔴</div>
+      <div style="font-weight: 700; color: var(--primary);">生命威胁</div>
+      <div style="font-size: 13px; color: var(--text2);">气道、呼吸、循环</div>
+    </div>
+    <div class="stat-box" style="border-left: 4px solid #D4A574;">
+      <div style="font-size: 24px; margin-bottom: 8px;">🟡</div>
+      <div style="font-weight: 700; color: var(--primary);">创伤处理</div>
+      <div style="font-size: 13px; color: var(--text2);">伤口、骨折、包扎</div>
+    </div>
+    <div class="stat-box" style="border-left: 4px solid #2E7D32;">
+      <div style="font-size: 24px; margin-bottom: 8px;">🟢</div>
+      <div style="font-weight: 700; color: var(--primary);">环境伤害</div>
+      <div style="font-size: 13px; color: var(--text2);">高山、热、冷、水</div>
+    </div>
+  </div>
+  
+  <div class="col-card" style="margin-top: 16px;">
+    <h4>📦 关键内容</h4>
+    <ul>
+      <li>病患评估流程图（step-by-step决策树）</li>
+      <li>生命体征速查表</li>
+      <li>药物剂量速查（按体重计算）</li>
+      <li>撤离标准判断</li>
+      <li>急救包配置清单</li>
+    </ul>
+  </div>
+  
+  <div class="core-box" style="margin-top: 16px; background: linear-gradient(135deg, #2E7D32, #43A047);">
+    <h3>推荐程度：⭐⭐⭐⭐⭐</h3>
+    <p>所有户外爱好者的必备参考书。建议与《背包客手册》一起作为户外双保险。</p>
+  </div>
+</div>
+
+<!-- 第6页: Wilderness Medicine -->
+<div class="slide" id="slide-6">
+  <h2 class="slide-title">📖 Wilderness Medicine</h2>
+  <p class="slide-subtitle">Paul Auerbach 主编 | 荒野医学百科全书</p>
+  
+  <div class="def-card">
+    <div class="term">定位</div>
+    <div class="def">荒野医学领域的权威百科全书，被称为"荒野医学之父"Auerbach教授主编。最新第9版于2024年更新，1800+页。全球荒野医学领域引用率最高的著作。</div>
+  </div>
+  
+  <div class="three-col">
+    <div class="col-card green">
+      <h4>🏔️ 环境伤害</h4>
+      <ul>
+        <li>高海拔医学（最详尽）</li>
+        <li>潜水医学</li>
+        <li>热相关疾病</li>
+        <li>冷相关疾病</li>
+        <li>动植物伤害</li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h4>🩹 创伤与医疗</h4>
+      <ul>
+        <li>伤口处理</li>
+        <li>骨折与脱臼</li>
+        <li>心血管紧急</li>
+        <li>代谢紧急</li>
+        <li>神经系统</li>
+      </ul>
+    </div>
+    <div class="col-card blue">
+      <h4>👶 特殊情境</h4>
+      <ul>
+        <li>儿童荒野医学</li>
+        <li>孕妇野外</li>
+        <li>荒野牙科</li>
+        <li>兽医问题</li>
+        <li>气候变化影响</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="quote-box">
+    "行业圣经地位：全球荒野医学领域引用率最高的著作，每项建议都有文献支撑。"
+    <cite>— Paul Auerbach</cite>
+  </div>
+</div>
+
+<!-- 第7页: Medicine for Mountaineering -->
+<div class="slide" id="slide-7">
+  <h2 class="slide-title">📖 Medicine for Mountaineering</h2>
+  <p class="slide-subtitle">James A. Wilkerson 主编 | 登山医学权威</p>
+  
+  <div class="def-card">
+    <div class="term">定位</div>
+    <div class="def">专门针对登山/高海拔活动的医学参考，首版于1960年代，现已发行第7版。作者都是活跃的登山医生，内容来自真实经验。</div>
+  </div>
+  
+  <div class="two-col">
+    <div class="col-card" style="border-top-color: #1565C0;">
+      <h4>🏔️ 高海拔医学（核心章节）</h4>
+      <ul>
+        <li>急性高山症（AMS）</li>
+        <li>高山脑水肿（HACE）</li>
+        <li>高山肺水肿（HAPE）</li>
+        <li>高海拔视网膜出血</li>
+        <li>冻伤与冻僵</li>
+        <li>雪盲与太阳灼伤</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>🩺 实用内容</h4>
+      <ul>
+        <li>骨折固定技术</li>
+        <li>担架与搬运</li>
+        <li>脊柱保护</li>
+        <li>伤口处理</li>
+        <li>急救包配置清单</li>
+        <li>团队急救包清单</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>高海拔深度评分：⭐⭐⭐⭐⭐</strong><br>登山领域最权威，专门针对登山场景，远比通用急救书深入。实用主义，不追求全面，但每个话题都讲得很透。</p>
+  </div>
+</div>
+
+<!-- 第8页: Prepper's Medical Handbook -->
+<div class="slide" id="slide-8">
+  <h2 class="slide-title">📖 Prepper's Medical Handbook</h2>
+  <p class="slide-subtitle">William W. Forgey 主编 | 场景化配置</p>
+  
+  <div class="def-card">
+    <div class="term">定位</div>
+    <div class="def">面向"预备者"社群的医疗应急手册。实用主义、场景化、注重可操作性。强调自给自足，适合无法及时获得医疗救助的情境。</div>
+  </div>
+  
+  <div class="two-col">
+    <div class="col-card">
+      <h4>💊 药品章节（重要特色）</h4>
+      <ul>
+        <li>非处方药详细指南</li>
+        <li>剂量、适应症、禁忌</li>
+        <li>处方药使用指导</li>
+        <li>自然药物选项</li>
+      </ul>
+      <h4 style="margin-top: 16px;">🏥 医疗程序</h4>
+      <ul>
+        <li>静脉输液建立</li>
+        <li>导尿</li>
+        <li>脓肿切开引流</li>
+        <li>牙科急救</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>📦 按场景分类配置</h4>
+      <ul>
+        <li>家庭急救包</li>
+        <li>车载急救包</li>
+        <li>户外急救包</li>
+        <li>长途旅行急救包</li>
+      </ul>
+      <h4 style="margin-top: 16px;">⭐ 评价</h4>
+      <ul>
+        <li><strong>药品深度：⭐⭐⭐⭐⭐</strong><br>五本书中最详尽</li>
+        <li><strong>场景化：⭐⭐⭐⭐⭐</strong><br>按场景分类配置清单</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 第9页: 推荐组合 - 入门 -->
+<div class="slide" id="slide-9">
+  <h2 class="slide-title">🎯 推荐组合：入门户外爱好者</h2>
+  <p class="slide-subtitle">1-2本书的最佳选择</p>
+  
+  <div class="two-col">
+    <div class="col-card green">
+      <h4>📗 首选书籍 1</h4>
+      <div style="font-size: 48px; text-align: center; margin: 16px 0;">📖</div>
+      <h4 style="text-align: center;">Wilderness First Aid Field Guide</h4>
+      <p style="text-align: center; color: var(--text2); font-size: 14px;">便携速查手册</p>
+      <ul style="margin-top: 16px;">
+        <li>口袋书尺寸，防水设计</li>
+        <li>5秒内定位所需章节</li>
+        <li>现场查阅极佳</li>
+        <li>所有户外爱好者必备</li>
+      </ul>
+    </div>
+    <div class="col-card">
+      <h4>📗 首选书籍 2</h4>
+      <div style="font-size: 48px; text-align: center; margin: 16px 0;">📖</div>
+      <h4 style="text-align: center;">Medicine for Mountaineering</h4>
+      <p style="text-align: center; color: var(--text2); font-size: 14px;">登山医学权威</p>
+      <ul style="margin-top: 16px;">
+        <li>高海拔知识最深入</li>
+        <li>登山场景全面覆盖</li>
+        <li>适中重量可携带</li>
+        <li>实战经验支撑</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="core-box">
+    <h3>组合优势</h3>
+    <p>指南用于现场快速查阅，登山医学用于深入学习高海拔知识。两者互补，覆盖大多数户外场景。</p>
+  </div>
+</div>
+
+<!-- 第10页: 推荐组合 - 进阶 -->
+<div class="slide" id="slide-10">
+  <h2 class="slide-title">🎯 推荐组合：认真学习者</h2>
+  <p class="slide-subtitle">2-3本书的深度学习方案</p>
+  
+  <div class="three-col">
+    <div class="stat-box">
+      <div style="font-size: 32px; margin-bottom: 12px;">📗</div>
+      <div style="font-weight: 700; color: var(--primary); font-size: 15px;">Wilderness First Aid 教材</div>
+      <div style="font-size: 13px; color: var(--text2); margin: 8px 0;">系统学习</div>
+      <div style="font-size: 12px; color: var(--text2);">WFA认证课程教材<br>行业标准</div>
+    </div>
+    <div class="stat-box">
+      <div style="font-size: 32px; margin-bottom: 12px;">📗</div>
+      <div style="font-weight: 700; color: var(--primary); font-size: 15px;">Wilderness Medicine</div>
+      <div style="font-size: 13px; color: var(--text2); margin: 8px 0;">权威百科</div>
+      <div style="font-size: 12px; color: var(--text2);">1800+页<br>荒野医学圣经</div>
+    </div>
+    <div class="stat-box">
+      <div style="font-size: 32px; margin-bottom: 12px;">📗</div>
+      <div style="font-weight: 700; color: var(--primary); font-size: 15px;">Medicine for Mountaineering</div>
+      <div style="font-size: 13px; color: var(--text2); margin: 8px 0;">登山专精</div>
+      <div style="font-size: 12px; color: var(--text2);">高海拔场景<br>实战经验</div>
+    </div>
+  </div>
+  
+  <div class="checklist" style="margin-top: 16px;">
+    <h4>📚 学习路径建议</h4>
+    <div class="checklist-item">1. 先读 Field Guide 建立整体认知</div>
+    <div class="checklist-item">2. 用 WFA教材 系统学习急救原理</div>
+    <div class="checklist-item">3. 参考 Medicine for Mountaineering 补充高海拔知识</div>
+    <div class="checklist-item">4. Wilderness Medicine 作为字典查阅</div>
+  </div>
+</div>
+
+<!-- 第11页: 推荐组合 - 专业/预备者 -->
+<div class="slide" id="slide-11">
+  <h2 class="slide-title">🎯 推荐组合：专业向导 & 应急预备者</h2>
+  <p class="slide-subtitle">3-4本书的最完整知识体系</p>
+  
+  <div class="two-col">
+    <div class="col-card">
+      <h4>🏥 专业向导/医疗背景</h4>
+      <ul>
+        <li>Wilderness First Aid 教材</li>
+        <li>Wilderness Medicine（行业圣经）</li>
+        <li>Medicine for Mountaineering</li>
+        <li>Prepper's Medical Handbook</li>
+      </ul>
+      <div class="insight-box" style="margin-top: 12px; padding: 12px 16px;">
+        <p style="font-size: 13px;"><strong>特点：</strong>完整覆盖荒野医学百科+登山专业+应急预备</p>
+      </div>
+    </div>
+    <div class="col-card accent">
+      <h4>🏠 应急预备者</h4>
+      <ul>
+        <li>Wilderness First Aid Field Guide</li>
+        <li>Prepper's Medical Handbook</li>
+        <li>Medicine for Mountaineering</li>
+      </ul>
+      <div class="insight-box" style="margin-top: 12px; padding: 12px 16px;">
+        <p style="font-size: 13px;"><strong>特点：</strong>指南+药品详解+高山场景，完美组合</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 第12页: 核心对比总结 -->
+<div class="slide" id="slide-12">
+  <h2 class="slide-title">📊 核心对比总结</h2>
+  <p class="slide-subtitle">快速选择指南</p>
+  
+  <table class="data-table">
+    <tr><th>你的需求</th><th>推荐书籍</th><th>原因</th></tr>
+    <tr><td class="label">现场快速查阅</td><td>WFA Field Guide</td><td>防水口袋书，流程图速查</td></tr>
+    <tr><td class="label">系统学习急救</td><td>WFA 教材</td><td>认证课程标准，内容全面</td></tr>
+    <tr><td class="label">高海拔登山</td><td>Medicine for Mt.</td><td>专门针对登山场景</td></tr>
+    <tr><td class="label">行业权威参考</td><td>Wilderness Medicine</td><td>1800+页百科，引用率最高</td></tr>
+    <tr><td class="label">药品配置</td><td>Prepper's Handbook</td><td>最详尽的药品指南</td></tr>
+    <tr><td class="label">全能首选</td><td>Field Guide + Mt. Medicine</td><td>便携+专业，互补最佳</td></tr>
+  </table>
+</div>
+
+<!-- 第13页: 总结 -->
+<div class="slide" id="slide-13">
+  <h2 class="slide-title">🔑 核心要点</h2>
+  <p class="slide-subtitle">记住这三件事</p>
+  
+  <div class="three-col">
+    <div class="core    <div class="core-box" style="padding: 24px;">
+      <h3 style="color: white; font-size: 18px;">📚 工具是辅助</h3>
+      <p style="font-size: 14px;">没有一本书能替代真正的急救培训</p>
+    </div>
+    <div class="core-box" style="padding: 24px;">
+      <h3 style="color: white; font-size: 18px;">🩺 知识+技能</h3>
+      <p style="font-size: 14px;">知道有什么 + 知道怎么用同样重要</p>
+    </div>
+    <div class="core-box" style="padding: 24px;">
+      <h3 style="color: white; font-size: 18px;">🎯

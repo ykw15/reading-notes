@@ -775,16 +775,9 @@ function openModal(id) {
         1: 'anti-inflammatory-ppt.html',
         2: '非暴力沟通--知识体系PPT.html',
         3: '哈灵顿扑克-知识体系PPT.html',
-        4: '背包客手册--知识体系PPT.html'
+        4: '背包客手册--知识体系PPT.html',
+        5: '户外急救类书籍综合评析--知识体系PPT.html'
     };
-    const notesMap = {
-        5: 'notes/户外急救类书籍综合评析.md'
-    };
-    if (notesMap[id]) {
-        window.location.href = notesMap[id];
-    } else {
-        window.location.href = pptMap[id] || 'index.html';
-    }
 }
 
 // 导航辅助
