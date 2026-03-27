@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>户外急救知识体系 - PPT读书笔记</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+:root {
+  --bg: #FAF5F0;
+  --card: #fff;
+  --primary: #8B3A2F;
+  --primary-light: #B85C38;
+  --accent: #D4A574;
+  --text: #1A1A1A;
+  --text2: #7A5A4A;
+  --border: #E8D4C4;
+  --shadow: 0 4px 20px rgba(139,58,47,.12);
+  --shadow2: 0 8px 32px rgba(139,58,47,.18);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; }
+
+/* 导航栏 */
+.navbar { position: fixed; top: 0; left: 0; right: 0; height: 60px; background: rgba(139,58,47,.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212,165,116,.3); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; z-index: 100; }
+.brand { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: var(--accent); text-decoration: none; }
+.back-btn { background: var(--accent); color: var(--primary); padding: 8px 20px; border-radius: 30px; text-decoration: none; font-size: 14px; font-weight: 600; transition: all .2s; }
+.back-btn:hover { background: #E0BC5A; transform: translateY(-1px); }
+.progress { font-size: 14px; color: rgba(255,255,255,.7); }
+.version-badge { position: fixed; top: 70px; right: 24px; background: rgba(139,58,47,.85); color: var(--accent); font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(212,165,116,.4); z-index: 90; font-family: monospace; }
+
+/* PPT容器 */
+.ppt-container { padding-top: 60px; min-height: 100vh; }
+.slide-wrapper { width: 100%; max-width: 1000px; margin: 0 auto; padding: 20px; }
+.slide { background: white; margin-bottom: 20px; border-radius: 16px; box-shadow: var(--shadow); padding: 40px 50px; display: none; animation: fadeIn .3s ease; min-height: 580px; }
+.slide.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 幻灯片标题 */
+.slide-title { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 6px; border-bottom: 3px solid var(--accent); padding-bottom: 14px; }
+.slide-subtitle { font-size: 14px; color: var(--text2); margin-bottom: 24px; font-weight: 300; }
+
+/* 定义卡片 */
+.def-card { background: linear-gradient(135deg, #FDF5F0, #F5EBE3); border-radius: 12px; padding: 16px 20px; margin: 12px 0; border-left: 4px solid var(--primary); }
+.def-card .term { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.def-card .def { font-size: 13px; color: var(--text); line-height: 1.7; }
+.def-card .def strong { color: var(--primary); }
+
+/* 核心框 */
+.core-box { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 24px; border-radius: 14px; text-align: center; margin: 20px 0; box-shadow: var(--shadow2); }
+.core-box h3 { font-size: 20px; margin-bottom: 8px; color: var(--accent); font-family: 'Noto Serif SC', serif; }
+.core-box p { font-size: 14px; opacity: .95; line-height: 1.8; }
+
+/* 引用框 */
+.quote-box { background: linear-gradient(135deg, #F5EDE3, #EDE5DA); border-left: 5px solid var(--primary-light); padding: 18px 22px; margin: 16px 0; font-style: italic; font-size: 14px; color: #6B2A1F; border-radius: 0 12px 12px 0; }
+.quote-box cite { display: block; margin-top: 6px; font-size: 12px; color: var(--text2); font-style: normal; }
+
+/* 表格 */
+.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 12px; }
+.data-table th { background: var(--primary); color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
+.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+.data-table tr:nth-child(even) { background: #FDF8F5; }
+.data-table .label { font-weight: 600; color: var(--primary); }
+
+/* 两列 */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+.col-card { background: #FDF8F5; border-radius: 12px; padding: 18px; border-top: 4px solid var(--primary); }
+.col-card.accent { border-top-color: var(--accent); }
+.col-card h4 { color: var(--primary); font-size: 14px; margin-bottom: 10px; font-weight: 600; }
+.col-card ul { margin: 0; padding-left: 16px; }
+.col-card li { margin-bottom: 5px; color: var(--text2); font-size: 12px; line-height: 1.5; }
+
+/* 三列 */
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.stat-box { background: white; border-radius: 12px; padding: 16px 10px; text-align: center; border: 1px solid var(--border); }
+.stat-number { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.stat-label { font-size: 11px; color: var(--text2); line-height: 1.4; }
+
+/* 洞察框 */
+.insight-box { background: linear-gradient(135deg, #FFF5EE, #FDF0E8); border-radius: 12px; padding: 14px 18px; margin: 14px 0; display: flex; gap: 12px; align-items: flex-start; border: 1px solid var(--border); }
+.insight-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.insight-box p { font-size: 12px; color: var(--text); line-height: 1.6; }
+
+/* 步骤卡片 */
+.step-card { background: linear-gradient(135deg, #8B3A2F, #B85C38); color: white; border-radius: 12px; padding: 20px; margin: 14px 0; }
+.step-card .step-title { font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 10px; font-family: 'Noto Serif SC', serif; }
+.step-card ul { padding-left: 18px; }
+.step-card li { margin-bottom: 6px; font-size: 13px; line-height: 1.6; }
+
+/* 比较表 */
+.compare-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 11px; }
+.compare-table th { background: var(--primary); color: white; padding: 8px 10px; text-align: center; font-weight: 600; }
+.compare-table td { padding: 7px 10px; border: 1px solid var(--border); text-align: left; vertical-align: middle; }
+.compare-table td:not(:first-child) { text-align: center; }
+.compare-table tr:nth-child(even) td { background: #FDF8F5; }
+
+/* 警告框 */
+.warn-box { background: #FEF2F2; border-left: 4px solid #DC2626; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 14px 0; }
+.warn-box .warn-title { font-size: 13px; font-weight: 700; color: #DC2626; margin-bottom: 6px; }
+.warn-box p { font-size: 12px; color: #7F1D1D; line-height: 1.6; }
+
+/* 导航按钮 */
+.nav-controls { position: fixed; bottom: 30px; right: 30px; display: flex; gap: 12px; z-index: 100; }
+.nav-btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 30px; cursor: pointer; font-size: 14px; font-weight: 500; box-shadow: var(--shadow2); transition: all .2s; }
+.nav-btn:hover { background: var(--primary-light); transform: translateY(-2px); }
+.nav-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+.progress-bar { position: fixed; bottom: 0; left: 0; height: 4px; background: var(--accent); transition: width .3s ease; z-index: 100; }
+
+@media (max-width: 768px) {
+  .slide { padding: 28px 20px; }
+  .two-col { grid-template-columns: 1fr; }
+  .three-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="brand">📚 读书笔记</a>
+  <div><a href="../index.html" class="back-btn">← 返回书单</a></div>
+  <span class="progress" id="progress">第 1 / 24 页</span>
+</nav>
+<div class="version-badge">v1.0.5</div>
+
+<div class="ppt-container">
+<div class="slide-wrapper">
+
+<!-- 第1页: 封面 -->
+<div class="slide active" id="slide-1">
+  <div style="text-align:center; padding: 50px 20px;">
+    <div style="font-size: 64px; margin-bottom: 16px;">🩺</div>
+    <h1 style="font-family: 'Noto Serif SC', serif; font-size: 36px; color: var(--primary); margin-bottom: 14px; line-height: 1.3;">户外急救<br>知识体系</h1>
+    <p style="font-size: 16px; color: var(--text2); margin-bottom: 36px;">基于AAOS《Wilderness First Aid》及权威来源整理</p>
+    <div style="display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 36px;">
+      <div class="stat-box" style="min-width:120px;">
+        <div class="stat-number">24</div>
+        <div class="stat-label">核心概念</div>
+      </div>
+      <div class="stat-box" style="min-width:120px;">
+        <div class="stat-number">PAS</div>
+        <div class="stat-label">评估框架</div>
+      </div>
+      <div class="stat-box" style="min-width:120px;">
+        <div class="stat-number">AMS</div>
+        <div class="stat-label">高海拔急救</div>
+      </div>
+    </div>
+    <div class="quote-box" style="text-align:left; max-width:500px; margin: 0 auto; font-size: 14px;">
+      "没有任何急救手册能替代真正的急救培训——知识+技能+工具，三者缺一不可。"
+    </div>
+  </div>
+</div>
+
+<!-- 第2页: 荒野急救 vs 城市急救 -->
+<div class="slide" id="slide-2">
+  <h2 class="slide-title">🏥 荒野急救 vs 城市急救</h2>
+  <p class="slide-subtitle">理解两者的本质区别</p>
+
+  <table class="compare-table">
+    <tr><th>维度</th><th>城市急救</th><th>荒野急救</th></tr>
+    <tr><td>救援时间</td><td>数分钟到达</td><td>数小时甚至数天</td></tr>
+    <tr><td>可用资源</td><td>充足（救护车/医院/设备）</td><td>极度有限，靠自身</td></tr>
+    <tr><td>撤离</td><td>专业团队处理</td><td>可能需临时制作担架</td></tr>
+    <tr><td>决策者</td><td>专业医疗团队</td><td>急救者必须独立判断</td></tr>
+    <tr><td>时间窗口</td><td>"黄金一小时"</td><td>可能需延长监护数天</td></tr>
+  </table>
+
+  <div class="def-card">
+    <div class="term">荒野急救定义</div>
+    <div class="def">在偏远地区发生的医疗紧急情况——距离医院、诊所等医疗机构非常远，需要特殊的技能、治疗技术和知识，在救援到达之前和撤离过程中对伤者进行<strong>长时间的监护和管理</strong>。</div>
+  </div>
+</div>
+
+<!-- 第3页: PAS评估框架 -->
+<div class="slide" id="slide-3">
+  <h2 class="slide-title">📋 PAS 病患评估系统</h2>
+  <p class="slide-subtitle">荒野急救的标准评估框架</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0;">
+    <div class="step-card">
+      <div class="step-title">第一步：初步评估</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,.85);">识别并处理<strong>危及生命</strong>的情况</div>
+      <ul style="margin-top: 10px; padding-left: 16px; font-size: 12px; color: rgba(255,255,255,.9);">
+        <li>A — 气道</li>
+        <li>B — 呼吸</li>
+        <li>C — 循环</li>
+        <li>D — 致命伤</li>
+        <li>E — 暴露</li>
+      </ul>
+    </div>
+    <div class="step-card">
+      <div class="step-title">第二步：病史采集</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,.85);">收集完整病史<br><strong>SAMPLE</strong></div>
+      <ul style="margin-top: 10px; padding-left: 16px; font-size: 12px; color: rgba(255,255,255,.9);">
+        <li>S — 症状</li>
+        <li>A — 过敏</li>
+        <li>M — 用药</li>
+        <li>P — 既往史</li>
+        <li>L — 最后摄入</li>
+        <li>E — 事件经过</li>
+      </ul>
+    </div>
+    <div class="step-card">
+      <div class="step-title">第三步：详细检查</div>
+      <div style="font-size: 12px; color: rgba(255,255,255,.85);">从<strong>头到脚</strong>系统检查</div>
+      <ul style="margin-top: 10px; padding-left: 16px; font-size: 12px; color: rgba(255,255,255,.9);">
+        <li>头部/面部</li>
+        <li>颈部/脊柱</li>
+        <li>胸部/腹部</li>
+        <li>四肢/骨盆</li>
+        <li>背部</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>核心原则：</strong>先处理危及生命的紧急情况，再处理其他问题。按顺序进行ABCs评估，不要跳过。</p>
+  </div>
+</div>
+
+<!-- 第4页: ABCs详解 -->
+<div class="slide" id="slide-4">
+  <h2 class="slide-title">🫁 ABCs — 生命支持三要素</h2>
+  <p class="slide-subtitle">按优先级顺序检查，任何一项出问题都可能在几分钟内致命</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0;">
+    <div style="background: linear-gradient(135deg, #DC2626, #EF4444); border-radius: 12px; padding: 20px; color: white; text-align: center;">
+      <div style="font-size: 36px; margin-bottom: 8px;">🫁</div>
+      <div style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">A — 气道</div>
+      <div style="font-size: 12px; opacity: .85; margin-bottom: 10px;">Airway</div>
+      <ul style="text-align:left; font-size: 11px; padding-left: 14px; line-height: 1.6;">
+        <li>是否有阻塞？</li>
+        <li>颈椎是否需要保护？</li>
+        <li>开放气道技术</li>
+      </ul>
+    </div>
+    <div style="background: linear-gradient(135deg, #2563EB, #3B82F6); border-radius: 12px; padding: 20px; color: white; text-align: center;">
+      <div style="font-size: 36px; margin-bottom: 8px;">💨</div>
+      <div style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">B — 呼吸</div>
+      <div style="font-size: 12px; opacity: .85; margin-bottom: 10px;">Breathing</div>
+      <ul style="text-align:left; font-size: 11px; padding-left: 14px; line-height: 1.6;">
+        <li>呼吸是否正常？</li>
+        <li>频率和质量如何？</li>
+        <li>是否有呼吸困难？</li>
+      </ul>
+    </div>
+    <div style="background: linear-gradient(135deg, #DC2626, #991B1B); border-radius: 12px; padding: 20px; color: white; text-align: center;">
+      <div style="font-size: 36px; margin-bottom: 8px;">❤️</div>
+      <div style="font-size: 24px; font-weight: 700; margin-bottom: 4px;">C — 循环</div>
+      <div style="font-size: 12px; opacity: .85; margin-bottom: 10px;">Circulation</div>
+      <ul style="text-align:left; font-size: 11px; padding-left: 14px; line-height: 1.6;">
+        <li>脉搏是否可触及？</li>
+        <li>有无大出血？</li>
+        <li>皮肤颜色/温度</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 重要警告</div>
+    <p>任何一项出问题都可能在几分钟内致命。发现气道阻塞？立即清除异物。需要呼吸？人工呼吸。需要循环？立即止血。</p>
+  </div>
+</div>
+
+<!-- 第5页: SAMPLE病史 -->
+<div class="slide" id="slide-5">
+  <h2 class="slide-title">📝 SAMPLE — 病史采集</h2>
+  <p class="slide-subtitle">二次评估的核心工具，帮助收集完整病史</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0;">
+    <div class="def-card">
+      <div class="term">S — 症状 Symptoms</div>
+      <div class="def">主要抱怨是什么？<br>哪里不舒服？有多严重？</div>
+    </div>
+    <div class="def-card">
+      <div class="term">A — 过敏 Allergies</div>
+      <div class="def">对什么过敏？<br>食物/药物/其他？</div>
+    </div>
+    <div class="def-card">
+      <div class="term">M — 用药 Medications</div>
+      <div class="def">正在服用什么药物？<br>包括非处方药</div>
+    </div>
+    <div class="def-card">
+      <div class="term">P — 既往史 Past</div>
+      <div class="def">有什么既往病史？<br>心脏病/糖尿病/哮喘等</div>
+    </div>
+    <div class="def-card">
+      <div class="term">L — 最后摄入 Last</div>
+      <div class="def">最后一次进食/进水<br>是什么时候？</div>
+    </div>
+    <div class="def-card">
+      <div class="term">E — 事件 Events</div>
+      <div class="def">事件经过是什么？<br>怎么发生的？</div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    "知道患者的过敏史和用药情况可以避免用药错误；了解最后摄入和事件经过有助于判断伤情。"
+    <cite>— AAOS Wilderness First Aid</cite>
+  </div>
+</div>
+
+<!-- 第6页: 生命体征 -->
+<div class="slide" id="slide-6">
+  <h2 class="slide-title">📊 生命体征正常范围</h2>
+  <p class="slide-subtitle">野外环境下需要重点监测的指标</p>
+
+  <table class="data-table">
+    <tr><th>指标</th><th>正常成人范围</th><th>野外测量方法</th><th>注意事项</th></tr>
+    <tr><td class="label">脉搏</td><td>60-100次/分钟</td><td>手腕/颈动脉触诊</td><td>休息5分钟后测量</td></tr>
+    <tr><td class="label">呼吸</td><td>12-20次/分钟</td><td>观察胸部起伏</td><td>不要告诉伤员你在数呼吸</td></tr>
+    <tr><td class="label">血压</td><td>90-120/60-80 mmHg</td><td>野外通常无法测量</td><td>如有设备可测</td></tr>
+    <tr><td class="label">体温</td><td>36.5-37.5°C</td><td>口腔/腋下/鼓膜</td><td>核心体温最重要</td></tr>
+    <tr><td class="label">意识AVPU</td><td>A 完全清醒</td><td>呼唤名字/疼痛刺激</td><td>A清醒 V对声音 P对疼痛 U无反应</td></tr>
+  </table>
+
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>野外实践：</strong>记录初始生命体征，定期复测。趋势变化比单次测量更重要。例如：脉搏持续升高可能意味着休克进展。</p>
+  </div>
+</div>
+
+<!-- 第7页: SOAP病历记录 -->
+<div class="slide" id="slide-7">
+  <h2 class="slide-title">📋 SOAP — 病历记录格式</h2>
+  <p class="slide-subtitle">荒野急救的标准记录格式，便于交接和后续医疗</p>
+
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 16px 0;">
+    <div class="def-card">
+      <div class="term">S — 主观信息 Subjective</div>
+      <div class="def">伤者主诉和病史<br>来自SAMPLE采集的信息</div>
+    </div>
+    <div class="def-card">
+      <div class="term">O — 客观检查 Objective</div>
+      <div class="def">客观检查结果<br>生命体征，体检发现</div>
+    </div>
+    <div class="def-card">
+      <div class="term">A — 评估 Assessment</div>
+      <div class="def">问题评估<br>诊断或可能的诊断</div>
+    </div>
+    <div class="def-card">
+      <div class="term">P — 计划 Plan</div>
+      <div class="def">处理计划<br>现场处理、撤离决策</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 记录重要性</div>
+    <p>详细的记录对于后续交接给医疗团队至关重要。即使是口头记录，关键词也要记住：时间、机制、过敏史、处理措施。</p>
+  </div>
+</div>
+
+<!-- 第8页: 止血 -->
+<div class="slide" id="slide-8">
+  <h2 class="slide-title">🩸 出血控制</h2>
+  <p class="slide-subtitle">控制出血的五个步骤 — DOTS原则</p>
+
+  <div class="two-col">
+    <div>
+      <div class="step-card">
+        <div class="step-title">D — 直接压迫 Direct Pressure</div>
+        <ul>
+          <li>用敷料直接压在伤口上</li>
+          <li>保持持续压力至少10分钟</li>
+          <li>不要中途检查</li>
+          <li>如血液渗透，加更多敷料</li>
+          <li>不要移除原有敷料</li>
+        </ul>
+      </div>
+      <div class="step-card" style="margin-top: 10px;">
+        <div class="step-title">O — 观察 Observe</div>
+        <ul>
+          <li>压迫是否有效止血？</li>
+          <li>出血是否停止或减少？</li>
+          <li>如无效，考虑下一步</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="step-card">
+        <div class="step-title">T — 止血带 Tourniquet</div>
+        <ul>
+          <li>用于危及生命的肢体出血</li>
+          <li>尽可能靠近伤口但在伤口和心脏之间</li>
+          <li>缠绕2-3圈，拉紧</li>
+          <li>记录使用时间</li>
+          <li>不要松开（除非有专业人员接手）</li>
+        </ul>
+      </div>
+      <div class="step-card" style="margin-top: 10px; background: linear-gradient(135deg, #DC2626, #B91C1C);">
+        <div class="step-title">S — 休克 Shock</div>
+        <ul>
+          <li>预防和处理休克</li>
+          <li>保持体温</li>
+          <li>抬高双腿（如果没有脊柱伤）</li>
+          <li>保持平静</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 第9页: 伤口分类 -->
+<div class="slide" id="slide-9">
+  <h2 class="slide-title">🩹 伤口类型与处理</h2>
+  <p class="slide-subtitle">不同伤口的识别和处理要点</p>
+
+  <table class="data-table">
+    <tr><th>类型</th><th>特征</th><th>处理要点</th></tr>
+    <tr><td class="label">切伤 Incision</td><td>边缘整齐的清洁切口（刀/玻璃）</td><td>清洁后闭合，胶带或蝴蝶贴</td></tr>
+    <tr><td class="label">裂伤 Laceration</td><td>不规则边缘的撕裂伤</td><td>清洁，评估深度，可能需要缝合</td></tr>
+    <tr><td class="label">擦伤 Abrasion</td><td>皮肤表面磨损</td><td>清洁，保护湿润环境</td></tr>
+    <tr><td class="label">刺伤 Puncture</td><td>尖锐物刺入</td><td>清洁，评估是否需要打破伤风</td></tr>
+    <tr><td class="label">撕裂伤 Avulsion</td><td>皮肤被撕掉</td><td>保存撕裂皮肤，复位</td></tr>
+  </table>
+
+  <div class="def-card">
+    <div class="term">伤口愈合四阶段</div>
+    <div class="def">
+      <strong>1. 止血</strong>（数分钟到数小时）→ <strong>2. 炎症</strong>（1-3天，清除碎片细菌）→ <strong>3. 增生</strong>（数天到数周，新组织形成）→ <strong>4. 重塑</strong>（最长2年，疤痕成熟）
+    </div>
+  </div>
+</div>
+
+<!-- 第10页: 骨折处理 -->
+<div class="slide" id="slide-10">
+  <h2 class="slide-title">🦴 骨折处理</h2>
+  <p class="slide-subtitle">固定原则与脊柱伤处理</p>
+
+  <div class="two-col">
+    <div class="col-card">
+      <h4>骨折固定原则</h4>
+      <ul>
+        <li><strong>不要复位</strong>（除非危及生命）</li>
+        <li>固定上下<strong>两个关节</strong></li>
+        <li>支撑受伤部位</li>
+        <li>评估神经血管状态</li>
+        <li>检查：脉搏/感觉/运动</li>
+        <li>记录初始状态</li>
+        <li>定期复查</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>脊柱损伤处理</h4>
+      <ul>
+        <li>除非必要，<strong>不要移动</strong>有脊柱伤风险的人</li>
+        <li>需要移动时，保持头、颈、躯干在<strong>一条线</strong></li>
+        <li>使用-log roll技术（滚动而不是弯曲）</li>
+        <li>至少需要3人操作</li>
+        <li>如必须一人操作，使用直线拉拽法</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>判断脊柱伤风险：</strong>高处坠落、机动车事故、跳水事故、颈部/背部疼痛、肢体麻木/刺痛、意识丧失。如有疑虑，按脊柱伤处理。</p>
+  </div>
+</div>
+
+<!-- 第11页: AMS -->
+<div class="slide" id="slide-11">
+  <h2 class="slide-title">🏔️ AMS — 急性高山症</h2>
+  <p class="slide-subtitle">快速上升至2500米以上时的常见反应</p>
+
+  <div class="two-col">
+    <div>
+      <div class="def-card">
+        <div class="term">什么是AMS？</div>
+        <div class="def">快速上升至2500米以上时出现的头晕、头痛、恶心、疲劳等症状。是一种<strong>轻微的高原反应</strong>，属于正常适应过程。</div>
+      </div>
+      <div class="def-card">
+        <div class="term">发病率</div>
+        <div class="def">
+          2500米：约<strong>20%</strong>的人会发病<br>
+          3000米：约<strong>40%</strong>的人会发病<br>
+          身体素质好<strong>不能</strong>避免发病
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="def-card">
+        <div class="term">主要症状</div>
+        <div class="def">
+          <strong>头痛</strong>（主要症状，通常在下午/晚上加重）<br>
+          恶心/呕吐<br>
+          疲劳/乏力<br>
+          食欲不振<br>
+          睡眠障碍（频繁醒来）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="def-card">
+    <div class="term">Lake Louise评分（AMS诊断）</div>
+    <div class="def">
+      头痛 + 以下任一症状 ≥ 3分（满分5分）：<strong>胃肠道症状</strong>（恶心/呕吐/食欲不振）+1分，<strong>疲劳/乏力</strong> +1分，<strong>睡眠困难</strong> +1分
+    </div>
+  </div>
+</div>
+
+<!-- 第12页: AMS治疗 -->
+<div class="slide" id="slide-12">
+  <h2 class="slide-title">💊 AMS — 治疗与预防</h2>
+  <p class="slide-subtitle">识别后立即处理，避免恶化为HACE/HAPE</p>
+
+  <div class="two-col">
+    <div class="col-card">
+      <h4>治疗措施</h4>
+      <ul>
+        <li><strong>停止上升</strong>，原地休息24-48小时</li>
+        <li>多喝水（但不要过量）</li>
+        <li><strong>避免酒精</strong></li>
+        <li>乙酰唑胺（Acetazolamide）：帮助加速适应</li>
+        <li>布洛芬：对头痛有效</li>
+        <li>如有症状加重：<strong>立即下降</strong></li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>预防措施</h4>
+      <ul>
+        <li>海拔2500米以上，<strong>每天上升不超过300-500米</strong></li>
+        <li>每上升1000米，休息一天</li>
+        <li>提前服用乙酰唑胺（上升前24小时开始）</li>
+        <li>保持充足水分</li>
+        <li>避免剧烈运动第一天</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 下降指征</div>
+    <p>症状在24小时内没有改善或加重，或出现以下任一情况：意识混乱、运动失调（走路不稳）、呼吸困难。请记住：<strong>没有药物能替代下降</strong>。</p>
+  </div>
+</div>
+
+<!-- 第13页: HACE -->
+<div class="slide" id="slide-13">
+  <h2 class="slide-title">🧠 HACE — 高山脑水肿</h2>
+  <p class="slide-subtitle">AMS的致命升级版本，死亡率接近100%</p>
+
+  <div class="def-card">
+    <div class="term">什么是HACE？</div>
+    <div class="def">大脑水肿导致的意识混乱、运动失调（走路踉跄）、昏迷。是AMS的<strong>致命升级版本</strong>。不在数小时内下降会导致死亡。</div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="def-card">
+        <div class="term">症状进展</div>
+        <div class="def">
+          1. 从AMS症状开始（头痛、恶心）<br>
+          2. <strong>意识混乱、行为改变</strong><br>
+          3. <strong>运动失调</strong>：走路不稳、无法走直线（"醉酒步态"）<br>
+          4. 精神状态恶化<br>
+          5. 最终昏迷
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="def-card">
+        <div class="term">关键测试</div>
+        <div class="def"><strong>闭眼双脚并拢站立测试（Romberg测试）</strong><br>要求伤者闭眼，双脚并拢站立。<br>如无法保持平衡 = 测试失败 = HACE信号</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 紧急治疗</div>
+    <p><strong>立即下降500-1000米</strong>（唯一确定有效的治疗）。如无法下降：使用便携式高压舱（如Gamow bag）+ 地塞米松 + 给氧。</p>
+  </div>
+</div>
+
+<!-- 第14页: HAPE -->
+<div class="slide" id="slide-14">
+  <h2 class="slide-title">🫁 HAPE — 高山肺水肿</h2>
+  <p class="slide-subtitle">肺部液体积聚导致的呼吸困难，另一种致命高山病</p>
+
+  <div class="def-card">
+    <div class="term">什么是HAPE？</div>
+    <div class="def">肺部液体积聚导致的呼吸困难。是另一种<strong>致命的高山病</strong>，与HACE可以同时发生。肺血管对低氧的异常反应导致液体渗出。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-card">
+      <h4>症状</h4>
+      <ul>
+        <li>呼吸困难（<strong>休息时也喘不过气</strong>）</li>
+        <li>干咳，逐渐加重</li>
+        <li>活动能力快速下降</li>
+        <li>湿啰音（肺部有水声）</li>
+        <li>发绀（嘴唇/指甲发青）</li>
+        <li>心率加快</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>治疗</h4>
+      <ul>
+        <li><strong>立即下降</strong>（最重要的措施）</li>
+        <li>nifedipine：减轻肺血管收缩</li>
+        <li>给氧</li>
+        <li>便携式高压舱</li>
+        <li>保持半坐位，减少回心血量</li>
+        <li><strong>不要让伤者独自行动</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 关键体征</div>
+    <p><strong>即使在休息时也呼吸急促</strong> = HAPE信号。不要让伤者独自行动（症状可能在数小时内恶化）。</p>
+  </div>
+</div>
+
+<!-- 第15页: 低体温 -->
+<div class="slide" id="slide-15">
+  <h2 class="slide-title">❄️ 低体温症</h2>
+  <p class="slide-subtitle">核心体温降至35°C以下，是户外最常见的致命威胁之一</p>
+
+  <table class="data-table">
+    <tr><th>程度</th><th>体温</th><th>症状</th></tr>
+    <tr><td class="label">轻度</td><td>32-35°C</td><td>颤抖、寒冷感、精神难以集中</td></tr>
+    <tr><td class="label">中度</td><td>28-32°C</td><td>停止颤抖、意识混乱、行动笨拙</td></tr>
+    <tr><td class="label">重度</td><td><28°C</td><td>无明显生命体征、肌肉僵硬、昏迷</td></tr>
+    <tr><td class="label">极重度</td><td><24°C</td><td>心脏骤停风险极高</td></tr>
+  </table>
+
+  <div class="two-col">
+    <div class="def-card">
+      <div class="term">反常脱衣（Paradoxical Undressing）</div>
+      <div class="def">中度到重度低体温症患者有时会<strong>脱掉衣服</strong>，这是因为皮肤血管突然扩张导致的错觉，与身体实际感觉"热"有关。<strong>这是危险信号</strong>，表明病情严重。</div>
+    </div>
+    <div class="def-card">
+      <div class="term">"没有人是死的，直到他变暖了且仍然死了"</div>
+      <div class="def">严重低体温患者可能看起来已经死亡，但仍有救活可能。<strong>移动时必须极其轻缓</strong>，避免触发心脏骤停。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 第16页: 低体温治疗 -->
+<div class="slide" id="slide-16">
+  <h2 class="slide-title">💊 低体温症 — 治疗</h2>
+  <p class="slide-subtitle">根据不同程度采取相应措施</p>
+
+  <div class="two-col">
+    <div class="col-card">
+      <h4>轻度低体温</h4>
+      <ul>
+        <li>停止暴露（移至避风处）</li>
+        <li>移除湿冷衣物</li>
+        <li>用干衣物/睡袋包裹</li>
+        <li>热饮（如果意识清醒）</li>
+        <li>身体接触保暖（与他人贴靠）</li>
+        <li>轻微活动产生热量</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>中重度低体温</h4>
+      <ul>
+        <li><strong>极其轻缓地移动</strong>（心脏敏感）</li>
+        <li>保持水平位置</li>
+        <li>不要摩擦或快速复温</li>
+        <li>包裹保温，等待自然升温</li>
+        <li>如有呼吸停止，开始CPR</li>
+        <li>立即撤离</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 禁忌事项</div>
+    <p>不要给昏迷或半昏迷的人喝热饮（窒息风险）。不要快速复温四肢（可能引发心脏骤停）。不要摩擦皮肤。</p>
+  </div>
+</div>
+
+<!-- 第17页: 冻伤 -->
+<div class="slide" id="slide-17">
+  <h2 class="slide-title">🧊 冻伤</h2>
+  <p class="slide-subtitle">皮肤或其他活组织冻结的损伤</p>
+
+  <div class="two-col">
+    <div>
+      <div class="def-card">
+        <div class="term">冻伤分级</div>
+        <div class="def">
+          <strong>一度（frostnip）</strong>：皮肤苍白，发麻，不留永久损伤<br><br>
+          <strong>二度</strong>：皮肤起水泡、发红、肿胀<br><br>
+          <strong>三度</strong>：皮肤变黑（坏疽），可能需要截肢<br><br>
+          <strong>四度</strong>：深层组织（肌肉、肌腱、骨）受影响
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="def-card">
+        <div class="term">易发部位</div>
+        <div class="def">手指、脚趾、<strong>鼻子</strong>、<strong>耳朵</strong>、脸颊、下巴</div>
+      </div>
+      <div class="def-card">
+        <div class="term">症状</div>
+        <div class="def">
+          麻木感<br>
+          触摸时感觉冰冷<br>
+          皮肤颜色变化：苍白→发青→发白/发黄<br>
+          活动笨拙
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>冻伤与冻疮（Chilblains）的区别</strong>：冻疮是反复暴露于接近冰点温度导致的慢性损伤，有瘙痒、红肿、水泡。冻伤是快速冻结造成的急性损伤。</p>
+  </div>
+</div>
+
+<!-- 第18页: 冻伤治疗 -->
+<div class="slide" id="slide-18">
+  <h2 class="slide-title">💊 冻伤 — 治疗</h2>
+  <p class="slide-subtitle">快速复温是核心原则</p>
+
+  <div class="step-card">
+    <div class="step-title">复温步骤</div>
+    <ul>
+      <li><strong>1. 评估可行性：</strong>一旦开始复温，必须保持温暖，不能再次冻结</li>
+      <li><strong>2. 快速复温：</strong>将患处浸入<strong>37-39°C</strong>的温水中20-30分钟，直到恢复颜色和柔软度</li>
+      <li><strong>3. 不要：</strong>摩擦或揉搓、加热（如火烤）、用暖宝宝直接贴</li>
+      <li><strong>4. 复温后：</strong>用干净纱布包裹，避免再次冻结</li>
+      <li><strong>5. 药物：</strong>布洛芬（止痛）、预防破伤风</li>
+    </ul>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 野外判断</div>
+    <p>在野外无法保证持续温暖时，<strong>不要复温</strong>。保持冻结状态到有条件时再处理。反复冻融循环比单次冻伤伤害更大。</p>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>复温成功的标志：</strong>皮肤变红/紫、有柔软感、恢复感觉。完全复温后如有大面积水泡或变黑，需要医疗评估。</p>
+  </div>
+</div>
+
+<!-- 第19页: 过敏性休克 -->
+<div class="slide" id="slide-19">
+  <h2 class="slide-title">😰 过敏性休克（Anaphylaxis）</h2>
+  <p class="slide-subtitle">严重的、可能致命的过敏反应</p>
+
+  <div class="def-card">
+    <div class="term">什么是过敏性休克？</div>
+    <div class="def">一种严重的、可能<strong>致命的过敏反应</strong>，发展迅速。症状通常在接触过敏原后数分钟到数小时内出现。</div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-card">
+      <h4>症状（可能只出现部分）</h4>
+      <ul>
+        <li>皮肤：荨麻疹、瘙痒、潮红</li>
+        <li>呼吸道：喉咙肿胀、呼吸急促</li>
+        <li>严重舌头肿胀</li>
+        <li>心血管：低血压、意识丧失</li>
+        <li>消化道：呕吐、腹泻</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>常见过敏原</h4>
+      <ul>
+        <li>昆虫蜇伤（蜜蜂、黄蜂）</li>
+        <li>食物：坚果、花生、牛奶、鱼、蛋</li>
+        <li>药物：抗生素、NSAIDs</li>
+        <li>乳胶</li>
+        <li>运动诱发</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 紧急治疗</div>
+    <p><strong>肾上腺素（Epinephrine）肌肉注射</strong>是首选和最关键的治疗。有过敏史者应随身携带肾上腺素笔（EpiPen）。<strong>即使使用了肾上腺素，仍需立即就医</strong>。</p>
+  </div>
+</div>
+
+<!-- 第20页: 溺水 -->
+<div class="slide" id="slide-20">
+  <h2 class="slide-title">🌊 溺水</h2>
+  <p class="slide-subtitle">由液体浸没口鼻导致的窒息</p>
+
+  <div class="two-col">
+    <div>
+      <div class="def-card">
+        <div class="term">分类</div>
+        <div class="def">
+          <strong>致命性溺水</strong>：最终导致死亡<br><br>
+          <strong>非致命性溺水</strong>：存活超过24小时
+        </div>
+      </div>
+      <div class="def-card">
+        <div class="term">关键事实</div>
+        <div class="def">大多数溺水是<strong>"无声"的</strong>，不会挣扎或呼喊。溺水者通常<strong>无法呼救</strong>。营救时注意自身安全。</div>
+      </div>
+    </div>
+    <div>
+      <div class="def-card">
+        <div class="term">救援后可能出现</div>
+        <div class="def">
+          呼吸问题<br>
+          意识混乱<br>
+          失去意识<br>
+          低体温（冷水溺水时）<br>
+          延迟症状（数小时后才出现）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">治疗</div>
+    <ul>
+      <li>从水中安全救出（注意自身安全）</li>
+      <li>评估气道和呼吸</li>
+      <li>人工呼吸和心肺复苏（如需要）</li>
+      <li>保暖（处理低体温）</li>
+      <li><strong>所有溺水者都需要送医评估</strong>（可能出现延迟症状）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 第21页: 热相关疾病 -->
+<div class="slide" id="slide-21">
+  <h2 class="slide-title">🌡️ 热相关疾病</h2>
+  <p class="slide-subtitle">从热痉挛到中暑，识别和处理</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0;">
+    <div class="def-card" style="border-left-color: #FCD34D;">
+      <div class="term" style="color: #92400E;">热痉挛</div>
+      <div class="def" style="font-size: 12px;">
+        <strong>原因：</strong>电解质丢失（大量出汗）<br><br>
+        <strong>症状：</strong>腿部/腹部肌肉痉挛<br><br>
+        <strong>治疗：</strong>休息、阴凉处、含电解质液体
+      </div>
+    </div>
+    <div class="def-card" style="border-left-color: #F97316;">
+      <div class="term" style="color: #C2410C;">热衰竭</div>
+      <div class="def" style="font-size: 12px;">
+        <strong>原因：</strong>体液和盐分大量丢失<br><br>
+        <strong>症状：</strong>大量出汗、恶心、头晕、皮肤苍白湿冷<br><br>
+        <strong>治疗：</strong>移至阴凉、补充液体、降温
+      </div>
+    </div>
+    <div class="def-card" style="border-left-color: #DC2626;">
+      <div class="term" style="color: #DC2626;">中暑（Heat Stroke）</div>
+      <div class="def" style="font-size: 12px;">
+        <strong>原因：</strong>体温调节失败<br><br>
+        <strong>症状：</strong>体温>40°C、意识混乱、<strong>皮肤干热（不出汗）</strong><br><br>
+        <strong>治疗：</strong><strong>立即</strong>降温、紧急撤离
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠️ 中暑 vs 热衰竭</div>
+    <p>关键区别：热衰竭大量出汗、皮肤湿冷；中暑<strong>不出汗</strong>、皮肤干热。中暑是医疗紧急情况，需要立即降温和撤离。</p>
+  </div>
+</div>
+
+<!-- 第22页: 分类 -->
+<div class="slide" id="slide-22">
+  <h2 class="slide-title">🏷️ 野外分类（Triage）</h2>
+  <p class="slide-subtitle">当伤员数量超过可用资源时，确定治疗优先顺序</p>
+
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0;">
+    <div style="background: #DC2626; border-radius: 10px; padding: 16px 10px; color: white; text-align: center;">
+      <div style="font-size: 24px; margin-bottom: 6px;">🔴</div>
+      <div style="font-size: 14px; font-weight: 700;">立即 Immediate</div>
+      <div style="font-size: 11px; opacity: .85; margin-top: 6px;">生命威胁但可挽救<br>需要立即处理</div>
+    </div>
+    <div style="background: #F59E0B; border-radius: 10px; padding: 16px 10px; color: white; text-align: center;">
+      <div style="font-size: 24px; margin-bottom: 6px;">🟡</div>
+      <div style="font-size: 14px; font-weight: 700;">可延迟 Delayed</div>
+      <div style="font-size: 11px; opacity: .85; margin-top: 6px;">需要处理<br>但不是立即紧急</div>
+    </div>
+    <div style="background: #22C55E; border-radius: 10px; padding: 16px 10px; color: white; text-align: center;">
+      <div style="font-size: 24px; margin-bottom: 6px;">🟢</div>
+      <div style="font-size: 14px; font-weight: 700;">轻伤 Minor</div>
+      <div style="font-size: 11px; opacity: .85; margin-top: 6px;">能自主行动<br>最后处理</div>
+    </div>
+    <div style="background: #1F2937; border-radius: 10px; padding: 16px 10px; color: white; text-align: center;">
+      <div style="font-size: 24px; margin-bottom: 6px;">⚫</div>
+      <div style="font-size: 14px; font-weight: 700;">无法挽救 Expectant</div>
+      <div style="font-size: 11px; opacity: .85; margin-top: 6px;">即使治疗<br>也难以存活</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <div class="insight-icon">💡</div>
+    <p><strong>历史来源：</strong>来自法语"trier"（挑选/分类），现代概念由拿破仑的外科医生Baron Dominique-Jean Larrey在19世纪战场救护中建立。</p>
+  </div>
+</div>
+
+<!-- 第23页: 求救与通讯 -->
+<div class="slide" id="slide-23">
+  <h2 class="slide-title">📡 求救信号与通讯</h2>
+  <p class="slide-subtitle">有效的求救是成功救援的关键</p>
+
+  <div class="two-col">
+    <div class="col-card">
+      <h4>求救信息必须包含</h4>
+      <ul>
+        <li><strong>WHO</strong> — 伤员数量和情况</li>
+        <li><strong>WHAT</strong> — 发生了什么</li>
+        <li><strong>WHEN</strong> — 什么时候发生的</li>
+        <li><strong>WHERE</strong> — 具体位置（GPS或详细描述）</li>
+        <li><strong>WEATHER</strong> — 当前天气条件</li>
+      </ul>
+    </div>
+    <div class="col-card accent">
+      <h4>求救信号</h4>
+      <ul>
+        <li><strong>国际信号：</strong>...---...（三短三长三短）</li>
+        <li><strong>反光信号镜：</strong>晴天可传40公里</li>
+        <li><strong>卫星设备：</strong>PLB、卫星电话</li>
+        <li><strong>烟雾信号：</strong>白天使用</li>
+        <li><strong>火光信号：</strong>夜晚使用</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="def-card">
+    <div class="term">出发前必做</div>
+    <div class="def">
+      1. 研究目的地和路线<br>
+      2. 了解最近的救援点和医院位置<br>
+      3. 携带适合的急救包<br>
+      4. <strong>告知他人行程计划</strong><br>
+      5. 携带通讯设备（手机、卫星电话、PLB）
+    </div>
+  </div>
+</div>
+
+<!-- 第24页: 总结 -->
+<div class="slide" id="slide-24">
+  <h2 class="slide-title">🔑 总结</h2>
+  <p class="slide-subtitle">没有一本急救手册能替代真正的培训</p>
+
+  <div class="core-box">
+    <h3>核心原则</h3>
+    <p><strong>知识 + 技能 + 工具</strong> — 三者缺一不可。<br><br>急救手册是工具，荒野急救培训是获得知识和技能的途径，而<strong>实践是将这一切内化的必经之路</strong>。</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0;">
+    <div class="stat-box">
+      <div style="font-size: 24px; margin-bottom: 8px;">📘</div>
+      <div class="stat-label" style="font-weight: 700;">学习原理</div>
+      <div style="font-size: 11px; color: var(--text2); margin-top: 6px;">理解为什么这样做，比记住怎么做更重要</div>
+    </div>
+    <div class="stat-box">
+      <div style="font-size: 24px; margin-bottom: 8px;">🎓</div>
+      <div class="stat-label" style="font-weight: 700;">实战培训</div>
+      <div style="font-size: 11px; color: var(--text2); margin-top: 6px;">参加WFA/WFR课程，获取认证和实操经验</div>
+    </div>
+    <div class="stat-box">
+      <div style="font-size: 24px; margin-bottom: 8px;">🎒</div>
+      <div class="stat-label" style="font-weight: 700;">装备准备</div>
+      <div style="font-size: 11px; color: var(--text2); margin-top: 6px;">配置适合自己的急救包，熟悉每件物品</div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    "阅读过多的此类书籍可能会让你觉得能在危险的户外旅行中幸存是一件很走运的事儿。"
+    <cite>— Chris Townsend，《背包客手册》</cite>
+  </div>
+
+  <div style="background: linear-gradient(160deg, #8B3A2F, #B85C38); border-radius: 16px; padding: 32px; text-align: center; margin-top: 16px; color: white;">
+    <div style="font-size: 36px; margin-bottom: 12px;">🩺 🏔️ ❤️</div>
+    <h2 style="font-family: 'Noto Serif SC', serif; font-size: 22px; margin-bottom: 8px; color: var(--accent);">感谢阅读</h2>
+    <p style="font-size: 13px; color: rgba(255,255,255,.8);">Stay safe, go prepared.</p>
+    <p style="font-size: 11px; color: rgba(255,255,255,.5); margin-top: 6px;">基于AAOS《Wilderness First Aid》及权威来源整理</p>
+  </div>
+</div>
+
+</div><!-- /slide-wrapper -->
+</div><!-- /ppt-container -->
+
+<div class="nav-controls">
+  <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← 上一页</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一页 →</button>
+</div>
+<div class="progress-bar" id="progressBar"></div>
+
+<script>
+let currentSlide = 1;
+const totalSlides = 24;
+function showSlide(n) {
+  for (let i = 1; i <= totalSlides; i++) {
+    const el = document.getElementById('slide-' + i);
+    if (el) el.classList.remove('active');
+  }
+  const target = document.getElementById('slide-' + n);
+  if (target) target.classList.add('active');
+  document.getElementById('progress').textContent = '第 ' + n + ' / ' + totalSlides + ' 页';
+  document.getElementById('prevBtn').disabled = (n === 1);
+  document.getElementById('nextBtn').disabled = (n === totalSlides);
+  document.getElementById('progressBar').style.width = ((n / totalSlides) * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function nextSlide() { if (currentSlide < totalSlides) { currentSlide++; showSlide(currentSlide); } }
+function prevSlide() { if (currentSlide > 1) { currentSlide--; showSlide(currentSlide); } }
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+});
+let touchStartX = 0;
+document.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', function(e) {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (diff > 50) nextSlide();
+  if (diff < -50) prevSlide();
+});
+showSlide(1);
+</script>
+</body>
+</html>
