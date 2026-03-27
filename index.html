@@ -581,8 +581,8 @@
 // ═══════════════════════════════════════
 // 版本信息（调试用）
 // ═══════════════════════════════════════
-console.log('%c📚 读书笔记 v1.0.4', 'font-size:16px;color:#8b5e3c;font-weight:bold;');
-console.log('更新时间: 2026-03-27 | 基于 OCR 原文重建《背包客手册》笔记');
+console.log('%c📚 读书笔记 v1.0.5', 'font-size:16px;color:#8b5e3c;font-weight:bold;');
+console.log('更新时间: 2026-03-27 | 新增户外急救类书籍综合评析');
 
 // ═══════════════════════════════════════
 // 书籍数据（你的读书笔记内容在这里配置）
@@ -662,6 +662,27 @@ const books = [
             { title: '装备系统', text: '庇护所、睡眠系统、背包、服装三层系统、炉具选择', page: '装备篇' },
             { title: '导航技能', text: '等高线读图、磁偏角修正、三角定位法、GPS辅助', page: '技能篇' },
             { title: '安全与急救', text: '低体温症识别处理、高原反应预防、水源处理方法', page: '安全篇' }
+        ]
+    },
+    {
+        id: 5,
+        title: '户外急救类书籍综合评析',
+        author: '综合整理',
+        category: '户外安全',
+        color: '#B85C38',
+        icon: '🩺',
+        rating: 5,
+        progress: 0,
+        totalPages: 0,
+        tags: ['户外', '急救', '医疗', '参考书评析'],
+        description: '综合评析5本权威户外急救书籍：Wilderness First Aid、Wilderness Medicine、Medicine for Mountaineering、野外急救现场指南、Prepper\'s Medical Handbook。包含各书定位、内容、评价和推荐组合。',
+        quote: '工具书是辅助，知识与技能才是核心。没有一本急救手册能替代真正的急救培训。',
+        quotePage: '综合评析',
+        coverBg: 'linear-gradient(145deg, #8B4513, #B85C38)',
+        notes: [
+            { title: 'Wilderness First Aid', text: 'AAOS教材，行业标准，荒野急救认证课程用', page: '教材版' },
+            { title: 'Wilderness First Aid Field Guide', text: '便携速查手册，口袋书防水设计，现场查阅极佳', page: '速查版' },
+            { title: '推荐组合', text: '入门：指南+登山医学；进阶：教材+百科；预备者：指南+Prepper', page: '组合建议' }
         ]
     }
 ];
@@ -748,7 +769,7 @@ function animateStats() {
         books.reduce((sum, b) => sum + b.notes.length, 0);
 }
 
-// 打开详情 - 跳转到PPT播放器
+// 打开详情 - 跳转到PPT播放器或笔记页面
 function openModal(id) {
     const pptMap = {
         1: 'anti-inflammatory-ppt.html',
@@ -756,7 +777,14 @@ function openModal(id) {
         3: '哈灵顿扑克-知识体系PPT.html',
         4: '背包客手册--知识体系PPT.html'
     };
-    window.location.href = pptMap[id] || 'index.html';
+    const notesMap = {
+        5: 'notes/户外急救类书籍综合评析.md'
+    };
+    if (notesMap[id]) {
+        window.location.href = notesMap[id];
+    } else {
+        window.location.href = pptMap[id] || 'index.html';
+    }
 }
 
 // 导航辅助
