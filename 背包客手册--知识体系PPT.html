@@ -140,7 +140,13 @@ body {
 .prog-severe { background: #FFCDD2; color: #7B241C; }
 
 /* 知识树 */
-.tree-box { background: #F8FAF6; border-radius: 12px; padding: 24px; margin: 20px 0; font-family: monospace; font-size: 13px; line-height: 2; color: var(--text); border: 1px solid var(--border); }
+.tree-box { background: #F8FAF6; border-radius: 12px; padding: 24px; margin: 20px 0; font-size: 14px; line-height: 1.8; color: var(--text); border: 1px solid var(--border); }
+.tree-box .root { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); }
+.tree-box .branch { margin: 14px 0 14px 20px; }
+.tree-box .branch-title { font-size: 15px; font-weight: 600; color: var(--green); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.tree-box .branch-title::before { content: ''; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+.tree-box .leaf { margin-left: 18px; padding: 4px 0; font-size: 13px; color: var(--text2); display: flex; align-items: flex-start; gap: 8px; }
+.tree-box .leaf::before { content: '→'; color: var(--green); }
 
 /* 导航按钮 */
 .nav-controls { position: fixed; bottom: 24px; right: 24px; display: flex; gap: 10px; z-index: 90; }
@@ -853,28 +859,36 @@ body {
   <p class="slide-subtitle">背包旅行的完整知识框架</p>
 
   <div class="tree-box">
-背包旅行知识体系
-│
-├── 🎒 装备系统
-│   ├── 庇护所（帐篷/天幕/吊床）— 重量 vs 防护性权衡
-│   ├── 睡眠系统（睡袋温标 + 睡垫R值）
-│   ├── 背包（容量选择 + 重心装载）
-│   ├── 服装（排汗层 → 保暖层 → 防护层）
-│   └── 炉具与烹饪（气罐/酒精/白汽油）
-│
-├── 🧠 技能系统
-│   ├── 导航（等高线 + 磁偏角 + 三角定位）
-│   ├── 水源处理（过滤/消毒/煮沸）
-│   ├── 营地选择（五原则）
-│   └── 急救（低体温症 + 高原反应 + 脱水）
-│
-├── 📅 规划系统
-│   ├── 行程规划（Naismith法则）
-│   ├── 食物规划（热量计算 + 重量目标）
-│   └── 补给策略（邮寄/就地/接送）
-│
-└── 🌿 伦理系统
-    └── 留痕最小化（LNT七原则）
+    <div class="root">🎒 背包旅行知识体系</div>
+    
+    <div class="branch">
+      <div class="branch-title">🎒 装备系统</div>
+      <div class="leaf">庇护所（帐篷/天幕/吊床）— 重量 vs 防护性权衡</div>
+      <div class="leaf">睡眠系统（睡袋温标 + 睡垫R值）</div>
+      <div class="leaf">背包（容量选择 + 重心装载）</div>
+      <div class="leaf">服装（排汗层 → 保暖层 → 防护层）</div>
+      <div class="leaf">炉具与烹饪（气罐/酒精/白汽油）</div>
+    </div>
+    
+    <div class="branch">
+      <div class="branch-title">🧠 技能系统</div>
+      <div class="leaf">导航（等高线 + 磁偏角 + 三角定位）</div>
+      <div class="leaf">水源处理（过滤/消毒/煮沸）</div>
+      <div class="leaf">营地选择（五原则）</div>
+      <div class="leaf">急救（低体温症 + 高原反应 + 脱水）</div>
+    </div>
+    
+    <div class="branch">
+      <div class="branch-title">📅 规划系统</div>
+      <div class="leaf">行程规划（Naismith法则）</div>
+      <div class="leaf">食物规划（热量计算 + 重量目标）</div>
+      <div class="leaf">补给策略（邮寄/就地/接送）</div>
+    </div>
+    
+    <div class="branch">
+      <div class="branch-title">🌿 伦理系统</div>
+      <div class="leaf">留痕最小化（LNT七原则）</div>
+    </div>
   </div>
 
   <div class="core-box">
