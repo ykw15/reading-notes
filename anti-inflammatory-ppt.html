@@ -248,11 +248,57 @@ body {
   border-radius: 12px;
   padding: 25px;
   margin: 20px 0;
-  font-family: 'Courier New', monospace;
+}
+
+/* 金字塔样式 */
+.pyramid { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.pyramid-level { 
+  padding: 12px 24px; 
+  border-radius: 8px; 
+  text-align: center; 
   font-size: 14px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  overflow-x: auto;
+  transition: transform .2s;
+}
+.pyramid-level:hover { transform: scale(1.02); }
+.pyramid-level.tier-1 { background: #fee2e2; color: #991b1b; width: 40%; }
+.pyramid-level.tier-2 { background: #fef3c7; color: #92400e; width: 55%; }
+.pyramid-level.tier-3 { background: #d1fae5; color: #065f46; width: 75%; }
+.pyramid-level.tier-4 { background: #dbeafe; color: #1e40af; width: 95%; }
+.pyramid-level .tier-label { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+.pyramid-level .tier-content { font-size: 12px; line-height: 1.5; }
+
+/* 流程图样式 */
+.flow-chart { 
+  background: linear-gradient(135deg, #f8f5f0, #f0ebe3); 
+  border-radius: 12px; 
+  padding: 20px; 
+  margin: 16px 0;
+  border-left: 4px solid var(--accent);
+}
+.flow-step { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  margin: 10px 0;
+}
+.flow-arrow { 
+  color: var(--accent); 
+  font-size: 20px; 
+  font-weight: bold;
+}
+.flow-box { 
+  background: white; 
+  border-radius: 8px; 
+  padding: 14px 18px; 
+  flex: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.flow-box ul { margin: 0; padding-left: 18px; }
+.flow-box li { margin: 4px 0; font-size: 13px; color: var(--text); }
+.flow-label { 
+  font-weight: 600; 
+  color: var(--primary); 
+  font-size: 15px;
 }
 
 /* 导航控制 - 固定底部 */
@@ -992,23 +1038,26 @@ body {
   <h2 class="slide-title">抗炎食物金字塔</h2>
   <p class="slide-subtitle">每天吃什么，一目了然</p>
   
-  <div class="relation-map" style="text-align: center; font-size: 16px;">                    ┌─────────────┐
-                    │    少量     │
-                    │  红肉、加工 │
-                    │    食品     │
-                    └──────┬──────┘
-           ┌───────────────┴───────────────┐
-           │             适量              │
-           │      全谷物、豆类、低脂乳制品  │
-           └───────────────┬───────────────┘
-      ┌────────────────────┴────────────────────┐
-      │                  大量                     │
-      │       蔬菜、水果、坚果、种子              │
-      └────────────────────┬────────────────────┘
- ┌─────────────────────────┴─────────────────────────┐
- │                      基础                          │
- │   深海鱼类、亚麻籽油、橄榄油、香料（姜黄等）       │
- └───────────────────────────────────────────────────┘</div>
+  <div class="relation-map">
+    <div class="pyramid">
+      <div class="pyramid-level tier-1">
+        <div class="tier-label">🔴 少量</div>
+        <div class="tier-content">红肉、加工食品</div>
+      </div>
+      <div class="pyramid-level tier-2">
+        <div class="tier-label">🟡 适量</div>
+        <div class="tier-content">全谷物、豆类、低脂乳制品</div>
+      </div>
+      <div class="pyramid-level tier-3">
+        <div class="tier-label">🟢 大量</div>
+        <div class="tier-content">蔬菜、水果、坚果、种子</div>
+      </div>
+      <div class="pyramid-level tier-4">
+        <div class="tier-label">🔵 基础</div>
+        <div class="tier-content">深海鱼类、亚麻籽油、橄榄油、香料（姜黄等）</div>
+      </div>
+    </div>
+  </div>
   
   <h3 style="color: var(--primary); margin: 30px 0 15px;">2:1:7 健康法则</h3>
   <div class="three-col">
@@ -1086,16 +1135,22 @@ body {
   <p class="slide-subtitle">动起来，炎症退散</p>
   
   <h3 style="color: var(--primary); margin: 20px 0 15px;">运动抗炎机制</h3>
-  <div class="flow-chart">适度运动
-    ↓
-┌─────────────────────────────────────┐
-│ • 促进血液循环，带走炎症因子        │
-│ • 增强免疫功能                      │
-│ • 减少脂肪组织（减少促炎因子来源）  │
-│ • 释放内啡肽（天然抗炎物质）        │
-└─────────────────────────────────────┘
-    ↓
-降低全身炎症水平</div>
+  <div class="flow-chart">
+    <div class="flow-step">
+      <span class="flow-label">适度运动</span>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-box">
+      <ul>
+        <li>促进血液循环，带走炎症因子</li>
+        <li>增强免疫功能</li>
+        <li>减少脂肪组织（减少促炎因子来源）</li>
+        <li>释放内啡肽（天然抗炎物质）</li>
+      </ul>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <span class="flow-label" style="color: var(--accent);">降低全身炎症水平</span>
+  </div>
   
   <h3 style="color: var(--primary); margin: 30px 0 15px;">推荐运动量</h3>
   <div class="two-col">
@@ -1138,16 +1193,22 @@ body {
   <div class="two-col">
     <div>
       <h3 style="color: var(--primary); margin-bottom: 15px;">😴 睡眠抗炎</h3>
-      <div class="flow-chart" style="font-size: 13px;">优质睡眠
-    ↓
-┌──────────────────────────────┐
-│ • 生长激素分泌高峰（修复细胞）│
-│ • 清除炎症因子               │
-│ • 免疫系统恢复               │
-│ • 降低皮质醇（压力激素）      │
-└──────────────────────────────┘
-    ↓
-身体修复 + 炎症消退</div>
+      <div class="flow-chart">
+        <div class="flow-step">
+          <span class="flow-label">优质睡眠</span>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box">
+          <ul>
+            <li>生长激素分泌高峰（修复细胞）</li>
+            <li>清除炎症因子</li>
+            <li>免疫系统恢复</li>
+            <li>降低皮质醇（压力激素）</li>
+          </ul>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <span class="flow-label" style="color: var(--accent);">身体修复 + 炎症消退</span>
+      </div>
       <div class="checklist" style="margin-top: 20px;">
         <h4>睡眠建议</h4>
         <div class="checklist-item">每天7-8小时</div>
@@ -1161,17 +1222,23 @@ body {
         "焦虑等于'同时抽三根香烟'的自虐行为"
         <cite>—— 池谷敏郎</cite>
       </div>
-      <div class="flow-chart" style="font-size: 13px;">慢性压力
-    ↓
-皮质醇持续升高
-    ↓
-┌──────────────────────────────┐
-│ • 抑制免疫功能               │
-│ • 增加促炎因子分泌           │
-│ • 促进脂肪堆积               │
-└──────────────────────────────┘
-    ↓
-全身慢性炎症</div>
+      <div class="flow-chart">
+        <div class="flow-step">
+          <span class="flow-label">慢性压力</span>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <span class="flow-label">皮质醇持续升高</span>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box">
+          <ul>
+            <li>抑制免疫功能</li>
+            <li>增加促炎因子分泌</li>
+            <li>促进脂肪堆积</li>
+          </ul>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <span class="flow-label" style="color: #dc2626;">全身慢性炎症</span>
+      </div>
     </div>
   </div>
   
@@ -1202,16 +1269,22 @@ body {
   <p class="slide-subtitle">每抽一根烟，都在点燃炎症</p>
   
   <h3 style="color: var(--primary); margin: 20px 0 15px;">吸烟 → 炎症机制</h3>
-  <div class="flow-chart">吸烟
-    ↓
-┌─────────────────────────────────────┐
-│ • 产生活性氧（自由基）              │
-│ • 损伤血管内皮                      │
-│ • 诱发全身炎症                      │
-│ • 降低免疫力                        │
-└─────────────────────────────────────┘
-    ↓
-加速衰老 + 增加疾病风险</div>
+  <div class="flow-chart">
+    <div class="flow-step">
+      <span class="flow-label">吸烟</span>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-box">
+      <ul>
+        <li>产生活性氧（自由基）</li>
+        <li>损伤血管内皮</li>
+        <li>诱发全身炎症</li>
+        <li>降低免疫力</li>
+      </ul>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <span class="flow-label" style="color: #dc2626;">加速衰老 + 增加疾病风险</span>
+  </div>
   
   <h3 style="color: var(--primary); margin: 30px 0 15px;">戒烟时间线</h3>
   <table class="compare-table">
